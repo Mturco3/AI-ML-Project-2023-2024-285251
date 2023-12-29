@@ -38,6 +38,7 @@ In this section we are going to explain how we approached each part of our work.
 - 2.1) Handling missing values: we quoted this point but since we have already covered point 1 in the previous scetion (EDA), we didn't do anything more about it;
 - 2.2) Inspecting for redundancy: since there are many features that are not really correlated with the target variable, we drop them, since they are not relevant to train the model. In particular, we set the threshold at 0.15;
 <img width="829" alt="m1" src="![Alt text](image.png)">
+
 - 2.3) Column cleanup: for simpicity we converted all columns' names into lowercase (yes, we could have done it even earlier 😅);
 - 2.4) StandardScaler and OneHotEncoder:  are preprocessing techniques used in machine learning to prepare data for modeling. They serve different purposes: StandardScaler is used for standardizing numerical features by scaling them to have mean 0 and variance 1, OneHotEncoder is used for converting categorical variables into a numerical format. Then, we look for categorical variables with a low correlation with the target variable "Satisfied", using the same threshold as before (0.15), and we drop them;
 - 2.5) Removing outliers: we used two-steps approach, defining a lower_bound (determined by subtracting 1.5 times the interquartile range from the first quartile) and an upper_bound (adding 1.5 times the IQR to the third quartile), because this range helps identify values that fall significantly below or above the bulk of the data, indicating potential outliers.
@@ -52,16 +53,37 @@ In this section we are going to explain how we approached each part of our work.
 
 - Model selection: for our classification task we chose Logistic Regression, Decision Tree, and Random Forest;
 - Testing Different Models: to have an overview before the tuning, we compute the training and the validation accuracy for all the three models;
-- 
-
-
-
+- Hyperparameter Tuning: as a first step, we searched the best hyperparameters for the model using the RandomizedSearchCV function (this allowed us to explicitly control the number of parameter combinations that are attempted);
+- Learning curves:
+- Models Evaluation:
+- Confusion matrices:
+- ROC curves:
+- Models comparison:
 
 
 
 
 ## EXPERIMENTAL DESIGN
 
+- #### Introduction to the Experimental Approach: 
+
+Our experimental methodology centered on accurately anticipating customer contentment while pinpointing the most influential attributes. This strategy involved in-depth scrutiny, model curation, and assessment;
+
+- #### Choice of Models and Baseline Development: 
+
+- Logistic Regression: picked due to its computational efficiency and explanatory power, acting as a fundamental reference point.
+- Decision Trees:sSelected for their capacity to depict non-linear associations and interpretability, negating the necessity for feature scaling.
+- Random Forest: an amalgamation of Decision Trees intended to boost efficiency and steadiness, diminishing the likelihood of overfitting while adeptly handling diverse attributes and interactions.
+
+- #### Evaluation Metrics:
+
+- Accuracy: Evaluated the models' comprehensive performance.
+- Precision: Crucial in reducing false positives in predicting customer contentment.
+- Recall: Vital in accurately identifying all dissatisfied instances.
+- F1-Score: Offered a balanced measure encompassing precision and recall, particularly critical in an uneven dataset.
+- ROC-AUC Score: Assessed the models' capacity to differentiate contented and discontented customers.
+
+All these metrics contributed significantly to a comprehensive model assessment.
 
 ## RESULTS
 
