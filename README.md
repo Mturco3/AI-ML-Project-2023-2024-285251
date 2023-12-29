@@ -65,17 +65,17 @@ In this section we are going to explain how we approached each part of our work.
 
 ## EXPERIMENTAL DESIGN
 
-- #### Introduction to the Experimental Approach: 
+#### Introduction to the Experimental Approach: 
 
 Our experimental methodology centered on accurately anticipating customer contentment while pinpointing the most influential attributes. This strategy involved in-depth scrutiny, model curation, and assessment;
 
-- #### Choice of Models and Baseline Development: 
+#### Choice of Models and Baseline Development: 
 
 - Logistic Regression: picked due to its computational efficiency and explanatory power, acting as a fundamental reference point.
 - Decision Trees:sSelected for their capacity to depict non-linear associations and interpretability, negating the necessity for feature scaling.
 - Random Forest: an amalgamation of Decision Trees intended to boost efficiency and steadiness, diminishing the likelihood of overfitting while adeptly handling diverse attributes and interactions.
 
-- #### Evaluation Metrics:
+#### Evaluation Metrics:
 
 - Accuracy: Evaluated the models' comprehensive performance.
 - Precision: Crucial in reducing false positives in predicting customer contentment.
