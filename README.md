@@ -38,6 +38,13 @@ In this section we are going to explain how we approached each part of our work.
 - 2.1) Handling missing values: we quoted this point but since we have already covered point 1 in the previous scetion (EDA), we didn't do anything more about it;
 - 2.2) Inspecting for redundancy: since there are many features that are not really correlated with the target variable, we drop them, since they are not relevant to train the model. In particular, we set the threshold at 0.15;
 <img width="829" alt="m1" src="![Alt text](image.png)">
+- 2.3) Column cleanup: for simpicity we converted all columns' names into lowercase (yes, we could have done it even earlier 😅);
+- 2.4) StandardScaler and OneHotEncoder:  are preprocessing techniques used in machine learning to prepare data for modeling. They serve different purposes: StandardScaler is used for standardizing numerical features by scaling them to have mean 0 and variance 1, OneHotEncoder is used for converting categorical variables into a binary matrix format.
+- 2.5) Removing outliers
+
+
+
+
 
 
 
