@@ -46,7 +46,7 @@ In this section we are going to explain how we approached each part of our work.
 
 - 3.1) Split the dataset: we generated a training set containing 75% of the observations and a test set containing the remaining 25%.
 - 3.2) Distribution of the target variable in the different sets: The ratio between the two classes is the same in both the training and the test set. This is a good thing, since it means that the model will be trained on a balanced dataset and will be able to generalize well. In addittion, we do not have to deal with stratification (splitting the dataset mantaining a balanced ratio between the two classes);
-- 
+- 3.3) Fit and Transform: we apply fit_transform on the training set and transform on the test set in order to standardize the data. 
 
 ### Model Training and Hyperparameter Tuning:
 
