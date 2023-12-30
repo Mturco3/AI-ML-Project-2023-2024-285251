@@ -121,7 +121,8 @@ All these metrics contributed significantly to a comprehensive model assessment.
 ## RESULTS
 
 After the hyperparameter tuning, we evaluated the models' performance using the metrics described above. The results are summarized in the following table:
-*image*
+
+### Classification Metrics
 
 The model with the worst result is linear regression, and we can infere it both by observing the metrics and the confusion matrix. The result is not suprising, since it is highly probable that the dataset is not completely linearly separable. 
 
