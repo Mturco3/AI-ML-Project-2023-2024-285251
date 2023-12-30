@@ -3,9 +3,9 @@
 # Project 1: TRAINS
 
 ### Group members:
-- Michele Turco ()
 - Simone Filosofi (284531)
 - Simone Angelo Meli (289631)
+- Michele Turco ()
 
 ## INTRODUCTION
 
