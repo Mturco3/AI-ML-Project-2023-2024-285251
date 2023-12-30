@@ -74,28 +74,21 @@ The baseline for comparison is the model's performance without any outlier handl
 Since we do not have a specific aim (for example, minimize the false positives or the false negatives), we decided to consider multiple metrics to evaluate the model's performance. In particular, we considered the accuracy, the precision, the recall, the F1-score and the ROC-AUC score. However, for this kind of problem we assumed that minimize false positives is more important than minimize false negatives, since it is better to predict a customer as satisfied and then discover that he is not, than predict a customer as unsatisfied and then discover that he is satisfied. For this reason, we decided to consider the precision as the main metric to evaluate the model's performance.
 
 ### Conclusion:
+The best approach to handle outliers is to remove them. In fact, the model's performance is better when the outliers are removed.
 
-Conclusion: The best approach to handle outliers is to remove them. In fact, the model's performance is better when the outliers are removed.
+### 2) Hyperparameter Tuning
 
-#### Introduction to the Experimental Approach: 
+**Main Purpose:**
+The primary objective of this experiment was to determine the impact of hyperparameter tuning on the performance of the machine learning model. The experiment aims to quantify the impact of hyperparameter tuning on the different model's performance and determine the optimal approach to hyperparameter tuning.
 
-Our experimental methodology centered on accurately anticipating customer contentment while pinpointing the most influential attributes. This strategy involved in-depth scrutiny, model curation, and assessment;
+**Baseline(s):**
+The baseline for comparison is the model's performance without any hyperparameter tuning. The baseline is used to determine whether the hyperparameter tuning approach improves the model's performance.
 
-#### Choice of Models and Baseline Development: 
+**Evaluation Metric(s):** 
+For the same reason explained in the previous experiment, we decided to consider multiple metrics to evaluate the model's performance, giving more importance to the precision.
 
-- Logistic Regression: picked due to its computational efficiency and explanatory power, acting as a fundamental reference point.
-- Decision Trees:sSelected for their capacity to depict non-linear associations and interpretability, negating the necessity for feature scaling.
-- Random Forest: an amalgamation of Decision Trees intended to boost efficiency and steadiness, diminishing the likelihood of overfitting while adeptly handling diverse attributes and interactions.
-
-#### Evaluation Metrics:
-
-- Accuracy: Evaluated the models' comprehensive performance.
-- Precision: Crucial in reducing false positives in predicting customer contentment.
-- Recall: Vital in accurately identifying all dissatisfied instances.
-- F1-Score: Offered a balanced measure encompassing precision and recall, particularly critical in an uneven dataset.
-- ROC-AUC Score: Assessed the models' capacity to differentiate contented and discontented customers.
-
-All these metrics contributed significantly to a comprehensive model assessment.
+### Conclusion:
+The best hyperparameters for each model are described in the main notebook. The best approach to hyperparameter tuning is to use the RandomizedSearchCV function to find a good set of hyperparameters, and then use the GridSearchCV function to find the best hyperparameters in a smaller range of values (local maximum).
 
 ## RESULTS
 
