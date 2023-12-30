@@ -58,6 +58,22 @@ Learning curves illustrate how a model's performance evolves as it's trained on 
 
 ## EXPERIMENTAL DESIGN
 
+### 1) Outliers Handling
+
+**Main Purpose:**
+The primary objective of this experiment was to determine the impact of noisy data on the performance of the machine learning model. As shown in the EDA, the dataset contains outliers that may negatively affect the model's ability to generalize, especially for the feautures 'Arrival Delay in Minutes' and 'Departure Delay in Minutes'. On the other hand, many features have a range between 1 and 5, hence the outliers are not so relevant for these features.
+The experiment aims to quantify the impact of outliers on the different model's performance and determine the optimal approach to handling outliers.
+
+**Baseline(s):**
+The baseline for comparison is the model's performance without any outlier handling. The baseline is used to determine whether the outlier handling approach improves the model's performance.
+
+**Evaluation Metric(s):**
+Since we do not have a specific aim (for example, minimize the false positives or the false negatives), we decided to consider multiple metrics to evaluate the model's performance. In particular, we considered the accuracy, the precision, the recall, the F1-score and the ROC-AUC score. However, for this kind of problem we assumed that minimize false positives is more important than minimize false negatives, since it is better to predict a customer as satisfied and then discover that he is not, than predict a customer as unsatisfied and then discover that he is satisfied. For this reason, we decided to consider the precision as the main metric to evaluate the model's performance.
+
+### Conclusion:
+
+Conclusion: The best approach to handle outliers is to remove them. In fact, the model's performance is better when the outliers are removed.
+
 #### Introduction to the Experimental Approach: 
 
 Our experimental methodology centered on accurately anticipating customer contentment while pinpointing the most influential attributes. This strategy involved in-depth scrutiny, model curation, and assessment;
