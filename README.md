@@ -120,6 +120,11 @@ All these metrics contributed significantly to a comprehensive model assessment.
 
 ## RESULTS
 
+After the hyperparameter tuning, we evaluated the models' performance using the metrics described above. The results are summarized in the following table:
+*image*
+
+The model with the worst result is linear regression, and we can infere it both by observing the metrics and the confusion matrix. The result is not suprising, since it is highly probable that the dataset is not completely linearly separable. 
 
 ## CONCLUSIONS
 
+The model with the worst result is linear regression, and we can infere it both by observing the metrics and the confusion matrix. The result is not suprising, since it is highly probable that the dataset is not completely linearly separable. The others two model analyzed, Random Forest and Decision Tree, have similar results, but the Random Forest model is slightly better. In fact, the Random Forest model has a better accuracy, precision, recall and F1-score, and a slightly better ROC-AUC score. However, the computational time of the Random Forest model is much higher than the Decision Tree model, so if we want to train the model on a larger dataset, the Decision Tree model is preferable, especially considering the fact that the differences in the performance of the two models are not so relevant.
