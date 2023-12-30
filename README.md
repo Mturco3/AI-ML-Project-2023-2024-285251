@@ -27,11 +27,13 @@ In this section we are going to explain how we approached each part of our work.
 - 1.2) Showing the dimension of the dataset: We saw that the dataset has 129880 rows and 25 columns;
 - 1.3)Gathering informations from the data: *'df_trains.info()'* allowed us to output the columns' names and data types, and *'df_trains.nunique()'* outputs the number of unique values in each column;
 - 1.4)Handling missing values: we foud out that 'Arrival Delay in minutes' column has 393 missing values and we substitute these with the mode (even if another option would have been to simply delete the 393 missing values);
-- 1.5)Relevant features of numeric variables: we used the *'.describe()'* function that offers a comprehensive overview of key statistics for each numerical variable;
-- 1.6)Insights on categorical variables: we went through every categorical variable and found how many times each unique class appears, also plotting some pie charts and histograms to show;
-- 1.7)Insights on numerical variables: focusing on numerical variables, it was possible to compute correlation using the *'.corr()'* function (we also show the distibution of each variable through subgraphs);
-- 1.8) Data Reduction: assuming they don’t have any predictive power to predict the dependent variable, we removed 'Ticket ID' and 'Date and Time' features;
-- 1.9) Inspecting for Outliers: outliers are relevant to build our model since they can negatively affect the performance, so as a first step, we  plotted boxplots in order to have a general idea on what is going on.
+- 1.5) Data Reduction: assuming they don’t have any predictive power to predict the dependent variable, we removed 'Ticket ID' and 'Date and Time' features;
+- 1.6) Inspecting for Outliers: outliers are relevant to build our model since they can negatively affect the performance, so as a first step, we  plotted boxplots in order to have a general idea on what is going on.
+- 1.7) EDA for feature understanding: 
+- 1.8)Relevant features of numeric variables: we used the *'.describe()'* function that offers a comprehensive overview of key statistics for each numerical variable;
+- 1.7)Insights on categorical variables: we went through every categorical variable and found how many times each unique class appears, also plotting some pie charts and histograms to show;
+
+
 
 ### Preprocessing:
 
