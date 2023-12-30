@@ -10,6 +10,16 @@
 
 ## INTRODUCTION
 
+In the realm of ThomasTrain, our project revolves around deciphering customer satisfaction without directly soliciting feedback. Armed with the "trains_dataset.csv," our mission is to unravel the factors underlying customer contentment. This endeavor holds immense value for our marketing endeavors as it equips us to pinpoint the elements that keep our patrons delighted. Understanding their satisfaction levels allows us to tailor promotions effectively, ensuring a stronger retention rate and fostering lasting relationships with our clientele.
+
+The dataset provided holds the key to unveiling the subtle cues and patterns that contribute to customer satisfaction. By leveraging this dataset, we aim to uncover hidden insights that might not be overtly expressed. These insights will be pivotal for the marketing team's strategic initiatives, enabling them to craft personalized and engaging campaigns. Ultimately, our goal is to use these findings to create a more enriched experience for our customers, fostering loyalty and bolstering our brand's reputation.
+
+Through meticulous analysis of this dataset, we aim to bridge the gap between customer experiences and tangible insights. Our focus on understanding the unspoken factors influencing satisfaction levels will empower us to make informed decisions. By unraveling these nuances, we aspire to transform this understanding into actionable strategies that resonate with our customers, making their journey with ThomasTrain an exceptional one.
+
+
+
+OR 
+
 As part of your duties as senior data scientist for the famous ThomasTrain company, we were assigned to understand the satisfaction of the customers even without a direct evaluation. To accomplish this task,we were provided  with the “trains_dataset.csv”.
 
 First of all we used the Explanatory Data Analysis (EDA) to study carefully the the csv file and each categorical and numerical variable we had. We preprocessed the data handling missing values (substituting these with the mode), encoding the categories and removing the outilers. 
@@ -61,6 +71,12 @@ Learning curves illustrate how a model's performance evolves as it's trained on 
 
 ## EXPERIMENTAL DESIGN
 
+### Choice of Models and Baseline Development: 
+
+- *Logistic Regression*: picked due to its computational efficiency and explanatory power, acting as a fundamental reference point.
+- *Decision Trees*:sSelected for their capacity to depict non-linear associations and interpretability, negating the necessity for feature scaling.
+- *Random Forest*: an amalgamation of Decision Trees intended to boost efficiency and steadiness, diminishing the likelihood of overfitting while adeptly handling diverse attributes and interactions.
+
 ### 1) Outliers Handling
 
 **Main Purpose:**
@@ -89,6 +105,16 @@ For the same reason explained in the previous experiment, we decided to consider
 
 ### Conclusion:
 The best hyperparameters for each model are described in the main notebook. The best approach to hyperparameter tuning is to use the RandomizedSearchCV function to find a good set of hyperparameters, and then use the GridSearchCV function to find the best hyperparameters in a smaller range of values (local maximum).
+
+#### Evaluation Metrics:
+
+- *Accuracy*: Evaluated the models' comprehensive performance.
+- *Precision*: Crucial in reducing false positives in predicting customer contentment.
+- *Recall*: Vital in accurately identifying all dissatisfied instances.
+- *F1-Score*: Offered a balanced measure encompassing precision and recall, particularly critical in an uneven dataset.
+- *ROC-AUC Score*: Assessed the models' capacity to differentiate contented and discontented customers.
+
+All these metrics contributed significantly to a comprehensive model assessment.
 
 ## RESULTS
 
