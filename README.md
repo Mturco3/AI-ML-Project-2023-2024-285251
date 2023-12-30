@@ -36,13 +36,14 @@ In this section we are going to explain how we approached each part of our work.
 ### 4) Praparing data for modeling
 - 4.1) Encoding Categorical Variables:
 - 4.2) Removing Outliers
-- 4.3) Data Splitting
-- 4.4) Distribution of the target variable in the different sets
-- 4.5) Feature Scaling: Fit and Transform
+- 4.3) Data Splitting: we generated a training set containing 75% of the observations and a test set containing the remaining 25%.
+- 4.4) Distribution of the target variable in the different sets: The ratio between the two classes is the same in both the training and the test set. This is a good thing, since it means that the model will be trained on a balanced dataset and will be able to generalize well. In addittion, we do not have to deal with stratification (splitting the dataset mantaining a balanced ratio between the two classes);
+- 4.5) Feature Scaling (Fit and Transform)  we apply fit_transform on the training set and transform on the test set in order to standardize the data.
 - 4.6) Creating a Validation Set
 ### 5) Model Building
-- 5.1) Testing Different Models
-- 5.2) Hyperparameter Tuning Using Cross-Validation
+- Model selection: for our classification task we chose Logistic Regression, Decision Tree, and Random Forest;
+- 5.1) Testing Different Models: to have an overview before the tuning, we compute the training and the validation accuracy for all the three models;
+- 5.2) Hyperparameter Tuning Using Cross-Validation: as a first step, we searched the best hyperparameters for the model using the RandomizedSearchCV function (this allowed us to explicitly control the number of parameter combinations that are attempted);
 ### 6) Plotting Learning Curves
 ### 7) Models Evaluation
 - 7.1) Classification metrics
@@ -52,22 +53,6 @@ In this section we are going to explain how we approached each part of our work.
 
 
 
-
-### Preprocessing:
-
-- 2.1) Handling missing values: we quoted this point but since we have already covered point 1 in the previous scetion (EDA), we didn't do anything more about it;
-- 2.2) Inspecting for redundancy: since there are many features that are not really correlated with the target variable, we drop them, since they are not relevant to train the model. In particular, we set the threshold at 0.15;
-<img width="829" alt="m1" src="![Alt text](image.png)">
-
-- 2.3) Column cleanup: for simpicity we converted all columns' names into lowercase (yes, we could have done it even earlier 😅);
-- 2.4) StandardScaler and OneHotEncoder:  are preprocessing techniques used in machine learning to prepare data for modeling. They serve different purposes: StandardScaler is used for standardizing numerical features by scaling them to have mean 0 and variance 1, OneHotEncoder is used for converting categorical variables into a numerical format. Then, we look for categorical variables with a low correlation with the target variable "Satisfied", using the same threshold as before (0.15), and we drop them;
-- 2.5) Removing outliers: we used two-steps approach, defining a lower_bound (determined by subtracting 1.5 times the interquartile range from the first quartile) and an upper_bound (adding 1.5 times the IQR to the third quartile), because this range helps identify values that fall significantly below or above the bulk of the data, indicating potential outliers.
-
-### Generating training set and test set
-
-- 3.1) Split the dataset: we generated a training set containing 75% of the observations and a test set containing the remaining 25%.
-- 3.2) Distribution of the target variable in the different sets: The ratio between the two classes is the same in both the training and the test set. This is a good thing, since it means that the model will be trained on a balanced dataset and will be able to generalize well. In addittion, we do not have to deal with stratification (splitting the dataset mantaining a balanced ratio between the two classes);
-- 3.3) Fit and Transform: we apply fit_transform on the training set and transform on the test set in order to standardize the data. 
 
 ### Model Training and Hyperparameter Tuning:
 
