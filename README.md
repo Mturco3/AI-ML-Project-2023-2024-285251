@@ -50,10 +50,13 @@ since there were many features that are not really correlated with the target va
 ### 6) Plotting Learning Curves:
 Learning curves illustrate how a model's performance evolves as it's trained on varying amounts of data, revealing insights into overfitting, underfitting, and the impact of dataset size on model accuracy.
 ### 7) Models Evaluation
-- 7.1) Classification metrics
-- 7.2) Confusion Matrices
-- 7.3) ROC Curves
-- 7.4) Models Comparison
+- 7.1) Classification metrics: quantitative measures (such as accuracy, precision, recall, F1-score, ROC-AUC) we used to assess the performance of our classification models, providing insights into the model's ability to predict classes accurately, detect true positives, and minimize false predictions. 
+
+- 7.2) Confusion Matrices:  a tabular representation to visualize the performance of a classification algorithm, allowing a clear understanding of true positives, true negatives, false positives, and false negatives. This matrices are fundamental for evaluating a model's precision, recall, accuracy, and other classification metrics.
+
+- 7.3) ROC Curves: (Receiver Operating Characteristic) are graphical representations that illustrate a classification model's performance across various thresholds. They plot the true positive rate (sensitivity) against the false positive rate (1-specificity) for different threshold values, providing a comprehensive overview of a model's ability to distinguish between classes: the area under the ROC curve (AUC-ROC) quantifies the model's overall performance, with a higher AUC indicating better discriminatory power.
+
+- 7.4) Models Comparison:  We give final thoughts about the three classification models we chose, selecting the most suitable model based on the previous results we found and its predictive capabilities.
 
 
 ## EXPERIMENTAL DESIGN
