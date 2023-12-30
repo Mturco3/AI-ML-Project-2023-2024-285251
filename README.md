@@ -106,6 +106,8 @@ For the same reason explained in the previous experiment, we decided to consider
 ### Conclusion:
 The best hyperparameters for each model are described in the main notebook. The best approach to hyperparameter tuning is to use the RandomizedSearchCV function to find a good set of hyperparameters, and then use the GridSearchCV function to find the best hyperparameters in a smaller range of values (local maximum).
 
+### 3) 
+
 #### Evaluation Metrics:
 
 - *Accuracy*: Evaluated the models' comprehensive performance.
