@@ -120,11 +120,17 @@ All these metrics contributed significantly to a comprehensive model assessment.
 
 ## RESULTS
 
-After the hyperparameter tuning, we evaluated the models' performance using the metrics described above. The results are summarized in the following table:
+After the hyperparameter tuning, we evaluated the models' performance using the metrics described above. The results are summarized in the following plot:  
+![GETTING STARTED](./Comparisson_Classification_Metrics.png)  
+For sake of completness, the actual results are reported in the following table:  
+![GETTING STARTED](Metrics_Results.png)  
+As we can see, each metrics shows that the Random Forest model has the best performance, even if the differences with the Decision Tree model are really small. In order to have a better understanding of the models' performance that is also easy to interpret, we plotted the confusion matrices for each model:  
+![GETTING STARTED](Confusion_Matrices.png)  
+The confusion matrix plots on the y axis the actual value of the target variable for a given set of features and on the x axis the predicted value. It shows the number of true positives (1 on the y axis and 1 on the x axis), true negatives (0 on the y axis and 0 on the x axis), false positives (0 on the y axis and 1 on the x axis) and false negatives (1 on the y axis and 0 on the x axis). In particular, we can observe that the Random Forest model has the best performance, since it has the highest number of true positives and true negatives, and the lowest number of false positives and false negatives.  
+Another relevant metric to evaluate the model's performance is the ROC-AUC score, which is a measure of the model's ability to distinguish between classes. The ROC-AUC score is computed by plotting the true positive rate (sensitivity) against the false positive rate (1-specificity) for different threshold values. The area under the ROC curve (AUC-ROC) quantifies the model's overall performance, with a higher AUC indicating better discriminatory power. The ROC curves for each model are reported in the following plot:  
+![GETTING STARTED](ROC_Curves.png)
 
-### Classification Metrics
 
-The model with the worst result is linear regression, and we can infere it both by observing the metrics and the confusion matrix. The result is not suprising, since it is highly probable that the dataset is not completely linearly separable. 
 
 ## CONCLUSIONS
 
