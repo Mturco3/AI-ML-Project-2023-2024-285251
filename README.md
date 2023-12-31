@@ -121,15 +121,15 @@ All these metrics contributed significantly to a comprehensive model assessment.
 ## RESULTS
 
 After the hyperparameter tuning, we evaluated the models' performance using the metrics described above. The results are summarized in the following plot:  <br>  
-![GETTING STARTED](./Comparisson_Classification_Metrics.png)  
+![GETTING STARTED](/images/Comparisson_Classification_Metrics.png)  
 <br>For sake of completness, the actual results are reported in the following table:<br>
 
-![GETTING STARTED](Metrics_Results.png)  
+![GETTING STARTED](images/Metrics_Results.png)  
 <br> As we can see, each metrics shows that the Random Forest model has the best performance, even if the differences with the Decision Tree model are really small. In order to have a better understanding of the models' performance that is also easy to interpret, we plotted the confusion matrices for each model: <br>  
-![GETTING STARTED](Confusion_Matrices.png)  
+![GETTING STARTED](images/Confusion_Matrices.png)  
 <br> The confusion matrix plots on the y axis the actual value of the target variable for a given set of features and on the x axis the predicted value. It shows the number of true positives (1 on the y axis and 1 on the x axis), true negatives (0 on the y axis and 0 on the x axis), false positives (0 on the y axis and 1 on the x axis) and false negatives (1 on the y axis and 0 on the x axis). In particular, we can observe that the Random Forest model has the best performance, since it has the highest number of true positives and true negatives, and the lowest number of false positives and false negatives.  
 Another relevant metric to evaluate the model's performance is the ROC-AUC score, which is a measure of the model's ability to distinguish between classes. The ROC-AUC score is computed by plotting the true positive rate (sensitivity) against the false positive rate (1-specificity) for different threshold values. The area under the ROC curve (AUC-ROC) quantifies the model's overall performance, with a higher AUC indicating better discriminatory power. The ROC curves for each model are reported in the following plot:  <br>  
-![GETTING STARTED](ROC_Curves.png)
+![GETTING STARTED](/images/ROC_Curves.png)
 
 
 
@@ -142,4 +142,10 @@ In general, the dataset seems to be consistent and well structured, since the mo
 The model with the worst result is linear regression, and we can infere it both by observing the metrics and the confusion matrix. The result is not suprising, since it is highly probable that the dataset is not completely linearly separable. The others two model analyzed, Random Forest and Decision Tree, have similar results, but the Random Forest model is slightly better. In fact, the Random Forest model has a better accuracy, precision, recall and F1-score, and a slightly better ROC-AUC score. However, the computational time of the Random Forest model is much higher than the Decision Tree model, so if we want to train the model on a larger dataset, maybe the Decision Tree model is preferable, especially considering the fact that the differences in the performance of the two models are not so relevant, however, in that case the hyperparameter tuning is even more important to avoid the high risk of overfitting.
 
 ## 3) Analysis of the most important features
-Since we wanted to actually understand the reasons behind the customer satisfaction, we decided to analyze the most important features for each model, assuming that one of the goal of the project is to improve the overall customer satisfaction and hence to understand in which area improvements are needed the most. The most important features for each model are reported in the following table: <br>
+Since we wanted to actually understand the reasons behind the customer satisfaction, we decided to analyze the most important features for each model, assuming that one of the goal of the project is to improve the overall customer satisfaction and hence to understand in which area improvements are needed the most.  
+For random forest and decision tree, feature importance scores represent the contribution of each feature to predictive performance, with a range typically between 0 and 1. In the case of logistic regression, the coefficients indicate the strength and direction of feature influence, with an unbounded range.
+The most important features for decision tree and random forests are reported in the following table: <br>
+![GETTING STARTED](/images/Features_random_forests.png)<br>  
+Since the coefficients for the logistic regression are scaled differently from the other two models, we decided to plot the coefficients for the logistic regression model in a separate plot: <br>
+![GETTING STARTED](/images/Coefficients_logistic_regression.png)<br>  
+
