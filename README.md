@@ -5,7 +5,7 @@
 ### Group members:
 - Simone Filosofi (284531)
 - Simone Angelo Meli (289631)
-- Michele Turco ()
+- Michele Turco (285251)
 
 
 ## INTRODUCTION
@@ -16,24 +16,46 @@ The dataset provided holds the key to unveiling the subtle cues and patterns tha
 
 Through meticulous analysis of this dataset, we aim to bridge the gap between customer experiences and tangible insights. Our focus on understanding the unspoken factors influencing satisfaction levels will empower us to make informed decisions. By unraveling these nuances, we aspire to transform this understanding into actionable strategies that resonate with our customers, making their journey with ThomasTrain an exceptional one.
 
+## METHODS 2
+
+### 1) Understanding the dataset  
+
 
 ## METHODS
 
-Which methods have we used to realise our project?
-In this section we are going to explain how we approached each part of our work.
+In order to enable readers to better understand the ideas, methods and techniques used in this project, this section will explain the main steps of the project in a more accurate way with respect to the comments that can be found on the main.py file.  
+The main python libraries used for this project are:
+- pandas: to manipulate the dataset;
+- numpy: to perform mathematical operations;
+- matplotlib: to plot graphs;
+- seaborn: to plot graphs;
+- sklearn: to build the models and evaluate their performance;  
 
-- Reading the input file: we used the Pandas library to open the given csv file;
+The project is divided into 7 main steps, which are described in the following sections.  
+
 ### 1) Understanding the dataset
-- 1.1)General overview of the dataset: with *'df_trains.head()'* we extract the first rows of the dtataset just to visualize it;
-- 1.2) Showing the dimension of the dataset: We saw that the dataset has 129880 rows and 25 columns;
-- 1.3)Gathering informations from the data: *'df_trains.info()'* allowed us to output the columns' names and data types, and *'df_trains.nunique()'* outputs the number of unique values in each column;
-- 1.4)Handling missing values: we foud out that 'Arrival Delay in minutes' column has 393 missing values and we substitute these with the mode (even if another option would have been to simply delete the 393 missing values);
-- 1.5) Data Reduction: assuming they don’t have any predictive power to predict the dependent variable, we removed 'Ticket ID' and 'Date and Time' features;
-- 1.6) Outliers detection: outliers are relevant to build our model since they can negatively affect the performance, so as a first step, we  plotted boxplots in order to have a general idea on what is going on.
+- 1.1)General overview of the dataset: with *'df_trains.head()'* we extracted the first 5 rows of the dataset, to have a general idea of the data we are dealing with;
+- 1.2) Showing the dimension of the dataset: We saw that the dataset is composed by 129880 rows and 25 columns, to have a better understanding of the size of the dataset.
+- 1.3)Gathering informations from the data: *'df_trains.info()'* allowed us to output the columns' names and data types, and *'df_trains.nunique()'* outputs the number of unique values in each column. In particular, we found out that most of the dtypes were int64(18). We also had the dtype object(6) and float64(1). The object dtype is usually used for strings or where a column contains mixed data types. The float64 dtype is used for floating-point numbers.
+- 1.4)Handling missing values: we foud out that 'Arrival Delay in minutes' column has 393 missing values and we substitute these with the mode, even if another option would have been to simply delete the 393 missing values, since they are only a small percentage of the total number of rows.
+- 1.5) Data Reduction: assuming they don’t have any predictive power, we removed 'Ticket ID' and 'Date and Time' features. Indeed, as said before, the 'Ticket ID' feature is just an identifier, while the 'Date and Time' feature is not relevant for our analysis, since we are not interested in the time of the day or the day of the week when the customer bought the ticket.
+
 ### 2) EDA for feature understanding
-- 2.1) Descriptive statistics: this statistics summary, unig *'.describe().T*, gives a high-level idea to identify whether the data has any outliers, data entry error, distribution of data such as the data is normally distributed or left/right skewed;
-- 2.2) Univariate Analysis: univariate analysis scrutinizes individual variables, exploring their distributions and patterns focusing solely on one variable at a time to understand its behavior and properties within a dataset;
-- 2.3) Correlation Analysis: evaluates the relationship between categorical, numerical variables and the target variable, to understand which features were more important and which were not;
+As a first step, we had to distinguish categorical and numerical features, since they are treated differently in the EDA. In particular, we found out that there are 5 categorical features and 18 numerical features ("Date and Time"  and "Ticket ID" were removed in the previous step).
+- 2.1) **Outliers detection**: outliers are relevant to build our model since they can negatively affect the performance, so as a first step, we  plotted boxplots in order to have a general idea on what is going on. The results are reported in the following plot: <br>  
+![BOXPLOT](images\Boxplot.png) <br>  
+As we can see, there are many outliers in the 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' features. Even if almost than 75% of the values are less than 10, there are some values that are much higher than the others. In particular, the maximum value for 'Arrival Delay in Minutes' is 1584, while the maximum value for 'Departure Delay in Minutes' is 1592. Another feature that present some outliers is 'Distance', but in this case the outliers are not so relevant, since the maximum value is 4983, which is not so far from the 75% percentile (1359). The other features have a range between 1 and 5, hence the outliers are not so relevant for these features.  
+- 2.1) **Descriptive statistics**: this statistics summary, unig *'.describe().T*, only considers numerical features and gives a high-level idea to identify whether the data has any outliers, data entry error, distribution of data such as the data is normally distributed or left/right skewed. The results showed what we already knew from the boxplots, that is the presence of outliers in the 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' features. In addittion, we could see that the average is really low for both the features (15 and 14 minutes). Considering the others numerical features, we can observe a balanced distribution, with the average value that is often not so far from the median value.  
+After that, we focused on the categorical features, trying to understand how they are distributed and the most frequent value. The names of the columns are pretty self-explanatory:  
+  - Ticket class: The class in which the customers chose to travel. **'Premium'** is the most common value, indicating a potential preference.  
+  - Loyaly: whether a customer is loyal or not. A significant proportion of the dataset is marked as **'Loyal'**, which could be indicative of a successful loyalty program or repeated use of the service by the customers.  
+  - Gender: There is a slight **female majority** 
+  - Work or Leisure: Whether a customer is traveling for work reasons or not. There is an higher number of **work-related travels**.
+  - Satisfied: Our target variable. **Not Satisfied** is the most common value in the 'Satisfied' column.  
+- 2.2) **Univariate Analysis**: univariate analysis scrutinizes individual variables, exploring their distributions and patterns focusing solely on one variable at a time to understand its behavior and properties within a dataset. At first, we plotted histograms for each numerical feature, in order to understand the distribution of the data. The results are reported in the following plot: <br>  
+![HISTOGRAMS](images\Histograms_numerical.png) <br>  
+The plots show that customer ratings for onboard services generally skewed high, indicating overall customer satisfaction with the ThomasTrain company's services. In contrast, features like 'Food'n'Drink Rating', 'Seat Comfort Rating', and 'Legroom Service Rating' displayed more diverse customer opinions. Both 'Departure Delay in Minutes' and 'Arrival Delay in Minutes' showed a preponderance of short delays, with occasional longer delays that could significantly impact customer satisfaction. The distribution of 'Distance' suggested that most travels were short, but with enough long-distance trips to merit separate consideration for their impact on satisfaction levels.  
+- 2.3) **Correlation Analysis**: evaluates the relationship between categorical, numerical variables and the target variable, to understand which features were more important and which were not;
 ### 3) Feature selection:
 since there were many features that are not really correlated with the target variable, we drop them, since they are not relevant to train the model.
 ### 4) Praparing data for modeling
