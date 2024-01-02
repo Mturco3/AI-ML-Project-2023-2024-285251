@@ -74,11 +74,11 @@ In this section, the only thing we had to decide was the treshold to select feat
 ### 5) Model Building
 As our target variable, 'Satisfied,' is categorical, and our objective is to predict customer satisfaction with the service, our problem falls into the realm of classification. Specifically, since the outcome can be either 'Yes' (satisfied) or 'No' (not satisfied), it is a binary classification problem. Moving forward, we will analyze the following models for addressing this task:
 
-- **Logistic Regression:**
+- **Logistic Regression**
   
-- **Classification Trees:**
+- **Classification Trees**
   
-- **Random Forest:**
+- **Random Forest**
 
 - 5.1) Testing Different Models: to gain an initial understanding before tuning, we calculate the training and validation accuracy for all three models using their default parameters. The primary objective is to establish a general performance overview for each model and create a benchmark for later comparison with results obtained after hyperparameter tuning. This initial assessment provides insight into the models' baseline capabilities and sets the stage for evaluating improvements achieved through further optimization.. 
 - 5.2) Hyperparameter Tuning using Cross Validation: In our quest to optimize the performance of our models, the initial step involved searching for the best hyperparameters using the RandomizedSearchCV function. This method was chosen for its efficiency in exploring a broad hyperparameter space, with the aim of identifying a promising set that significantly enhances model performance. Following this, with the intent of fine-tuning the models with greater precision, we employed the GridSearchCV function. This approach allowed us to focus on a narrower neighborhood around the values identified in the randomized search, resembling the exploration of a local maximum in the hyperparameter space. The goal was to pinpoint the most optimal combination of hyperparameters for our models within this refined range. The detailed results of these hyperparameter tuning efforts, including the selected parameters, their respective values, and the resulting model performance metrics, can be found in the main notebook. This comprehensive analysis provides insights into the impact of hyperparameter choices on model performance and serves as a valuable reference for refining our models in future iterations.
