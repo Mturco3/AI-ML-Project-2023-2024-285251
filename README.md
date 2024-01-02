@@ -39,7 +39,7 @@ The project is divided into 7 main steps, which are described in the following s
 ### 2) EDA for feature understanding
 As a first step, we had to distinguish categorical and numerical features, since they are treated differently in the EDA. In particular, we found out that there are 5 categorical features and 18 numerical features ("Date and Time"  and "Ticket ID" were removed in the previous step).
 - 2.1) **Outliers detection**: outliers are relevant to build our model since they can negatively affect the performance, so as a first step, we  plotted boxplots in order to have a general idea on what is going on. The results are reported in the following plot: <br>  
-![BOXPLOT](images\Boxplot.png) <br>  
+![BOXPLOT](images/Boxplot.png) <br>  
 As we can see, there are many outliers in the 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' features. Even if almost than 75% of the values are less than 10, there are some values that are much higher than the others. In particular, the maximum value for 'Arrival Delay in Minutes' is 1584, while the maximum value for 'Departure Delay in Minutes' is 1592. Another feature that present some outliers is 'Distance', but in this case the outliers are not so relevant, since the maximum value is 4983, which is not so far from the 75% percentile (1359). The other features have a range between 1 and 5, hence the outliers are not so relevant for these features.  
 - 2.1) **Descriptive statistics**: this statistics summary, unig *'.describe().T*, only considers numerical features and gives a high-level idea to identify whether the data has any outliers, data entry error, distribution of data such as the data is normally distributed or left/right skewed. The results showed what we already knew from the boxplots, that is the presence of outliers in the 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' features. In addittion, we could see that the average is really low for both the features (15 and 14 minutes). Considering the others numerical features, we can observe a balanced distribution, with the average value that is often not so far from the median value.  
 After that, we focused on the categorical features, trying to understand how they are distributed and the most frequent value. The names of the columns are pretty self-explanatory:  
@@ -53,13 +53,14 @@ After that, we focused on the categorical features, trying to understand how the
 The plots show that customer ratings for onboard services generally skewed high, indicating overall customer satisfaction with the ThomasTrain company's services. In contrast, features like 'Food'n'Drink Rating', 'Seat Comfort Rating', and 'Legroom Service Rating' displayed more diverse customer opinions. Both 'Departure Delay in Minutes' and 'Arrival Delay in Minutes' showed a preponderance of short delays, with occasional longer delays that could significantly impact customer satisfaction. The distribution of 'Distance' suggested that most travels were short, but with enough long-distance trips to merit separate consideration for their impact on satisfaction levels.  
 After that, we plotted barplots for each categorical feature, in order to visualize the results previously stated: <br>  
 ![GETTING STARTED](images/Plots_categorical.png)  
-<br> 
+<br>   
+For categorical variables, we decided to compute correlation with the target variable Cramér's V, which is based on a nominal variation of Pearson’s Chi-Square Test. It is an association measure for nominal random variables, giving a value between 0 and 1 (0 means no association, 1 is full association).  
 
 - 2.3) **Correlation Analysis**: evaluates the relationship between categorical, numerical variables and the target variable, to understand which features were more impactful and correlated with the target variable. The results are reported in the following correlation heatmap: <br>  
-![HEATMAP](images\Heatmap_Correlation.png)
+![HEATMAP](images/Heatmap_Correlation.png)
 
 ### 3) Feature selection:
-since there were many features that are not really correlated with the target variable, we drop them, since they are not relevant to train the model.
+In this section, the only thing we had to decide was the treshold to select features to use to train the model. We simply tried to find the best value empirically, conducting an experiment that is explained in the **Experimental Design** section. The optimal result was obtained with a treshold of 0.15. As a consequence, the features dropped were: 
 
 ### 4) Praparing data for modeling
 - 4.1) Encoding Categorical Variables:we convert categorical variables into a format suitable for modeling;
