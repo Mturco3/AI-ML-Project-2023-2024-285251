@@ -1,6 +1,6 @@
 # AI-ML-Project-2023-2024
 
-# Project 1: TRAINS
+# Project 1: TRAINS 🚂
 
 ### Group members:
 - Simone Filosofi (284531)
@@ -9,7 +9,7 @@
 
 <img source="images\Correlation_Matrix.png">
 
-## INTRODUCTION
+## INTRODUCTION ✍️
 
 In the realm of ThomasTrain, our project revolves around deciphering customer satisfaction without directly soliciting feedback. Armed with the "trains_dataset.csv," our mission is to unravel the factors underlying customer contentment. This endeavor holds immense value for our marketing endeavors as it equips us to pinpoint the elements that keep our patrons delighted. Understanding their satisfaction levels allows us to tailor promotions effectively, ensuring a stronger retention rate and fostering lasting relationships with our clientele.
 
@@ -18,7 +18,7 @@ The dataset provided holds the key to unveiling the subtle cues and patterns tha
 Through meticulous analysis of this dataset, we aim to bridge the gap between customer experiences and tangible insights. Our focus on understanding the unspoken factors influencing satisfaction levels will empower us to make informed decisions. By unraveling these nuances, we aspire to transform this understanding into actionable strategies that resonate with our customers, making their journey with ThomasTrain an exceptional one.
 
 
-## METHODS
+## METHODS 🔍
 
 In order to enable readers to better understand the ideas, methods and techniques used in this project, this section will explain the main steps of the project in a more accurate way with respect to the comments that can be found on the main.py file.  
 The main python libraries used for this project are:
@@ -162,7 +162,7 @@ Detailed results, including the optimal hyperparameters for each model, are prov
 
 All these metrics contributed significantly to a comprehensive model assessment.
 
-## RESULTS
+## RESULTS 🥇
 
 After the hyperparameter tuning, we evaluated the models' performance using the metrics described above. The results are summarized in the following plot:  <br>  
 ![GETTING STARTED](/images/Comparisson_Classification_Metrics.png)  
@@ -177,7 +177,7 @@ Another relevant metric to evaluate the model's performance is the ROC-AUC score
 
 
 
-## CONCLUSIONS
+## CONCLUSIONS 🖋️
 
 ## 1) General considerations
 In general, the dataset seems to be consistent and well structured, since the models built performed well even on the test set (unseen data), also with great results in the last two models. This is a key factor for the project because each conclusion that could be drawn from the analysis of the dataset is reliable and can be used to improve the customer satisfaction.
