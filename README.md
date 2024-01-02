@@ -52,11 +52,14 @@ The plots show that customer ratings for onboard services generally skewed high,
 After that, we plotted barplots for each categorical feature, in order to visualize the results previously stated: <br>  
 <img src="images/Plots_categorical.png" width="1000" height="200"> 
 <br>   
+
 - 2.3) **Outliers Detection**: outliers are relevant to build our model since they can negatively affect the performance, so as a first step, we  plotted boxplots in order to have a general idea on what is going on. The results are reported in the following plot: <br>  
 <img src="images\Boxplot.png" alt="lol" width="1000" height="500"> <br>  
 
 As we can see, there are many outliers in the 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' features, confirming the previous hypothesis. Another feature that present some outliers is 'Distance', but in this case the outliers are as relevant as before, since the maximum value is 4983, which is not so far from the 75% percentile (1359). The other features have a range between 1 and 5, hence the outliers are not anomalous values at all.   
+
 - 2.4) **Encoding Categorical Variables**: we converted categorical variables into a format suitable for modeling, so that it was possible to plot a correlation matrix and understand the relationship between the features and the target variable. Furthermore, there are only 5 categorical features and they are quite easy to encode. Indeed, as seen before, 4 of them are binary variables ('Gender', 'Satisfied', 'Loyalty', 'Work or Leisure'), while the last one has 3 possible values ('Ticket Class'). As a consequence, we decided to use one-hot encoding for the first 4 features and ordinal encoding for the last one. One-hot encoding is used for these variables because it transforms each category into a binary value (0 or 1), creating a new binary column for each category. Label encoding is used for 'Ticket Class' because it represents an ordinal variable with a clear order or hierarchy among the categories ('Economy', 'Smart', 'Premium'). Label encoding assigns a unique numerical value to each category, preserving the order of the classes.  
+
 - 2.5) **Correlation Analysis**: evaluates the relationship between categorical, numerical variables and the target variable, to understand which features were more impactful and correlated with the target variable. The results are reported in the following correlation heatmap: 
 <br>  
 <img src="images/Correlation_target.png" width="1000" height= "500"> <br>  
