@@ -117,34 +117,33 @@ In this plot, we can observe that the training score is always higher than the c
 - *Decision Trees*:sSelected for their capacity to depict non-linear associations and interpretability, negating the necessity for feature scaling.
 - *Random Forest*: an amalgamation of Decision Trees intended to boost efficiency and steadiness, diminishing the likelihood of overfitting while adeptly handling diverse attributes and interactions.
 
-### 1) Outliers Handling
+### 1) Handling Outliers
 
-**Main Purpose:**
-The primary objective of this experiment was to determine the impact of noisy data on the performance of the machine learning model. As shown in the EDA, the dataset contains outliers that may negatively affect the model's ability to generalize, especially for the feautures 'Arrival Delay in Minutes' and 'Departure Delay in Minutes'. On the other hand, many features have a range between 1 and 5, hence the outliers are not so relevant for these features.
-The experiment aims to quantify the impact of outliers on the different model's performance and determine the optimal approach to handling outliers.
+**Objective:**
+This experiment aimed to assess the impact of noisy data on the machine learning model's performance. As evident from the Exploratory Data Analysis (EDA), the dataset contains outliers, particularly influencing the features 'Arrival Delay in Minutes' and 'Departure Delay in Minutes.' Conversely, many features exhibit a range between 1 and 5, rendering outliers less influential. The experiment sought to quantify the impact of outliers on various model performances and identify the optimal approach for handling them.
 
 **Baseline(s):**
-The baseline for comparison is the model's performance without any outlier handling. The baseline is used to determine whether the outlier handling approach improves the model's performance.
+The baseline for comparison involves evaluating the model's performance without any outlier handling. This baseline serves as a reference point to determine whether the outlier handling approach enhances model performance.
 
 **Evaluation Metric(s):**
-Since we do not have a specific aim (for example, minimize the false positives or the false negatives), we decided to consider multiple metrics to evaluate the model's performance. In particular, we considered the accuracy, the precision, the recall, the F1-score and the ROC-AUC score. However, for this kind of problem we assumed that minimize false positives is more important than minimize false negatives, since it is better to predict a customer as satisfied and then discover that he is not, than predict a customer as unsatisfied and then discover that he is satisfied. For this reason, we decided to consider the precision as the main metric to evaluate the model's performance.
+Given the absence of a specific optimization goal (e.g., minimizing false positives or false negatives), multiple metrics were considered for assessing model performance. These metrics included accuracy, precision, recall, F1-score, and ROC-AUC score. However, prioritizing the minimization of false positives over false negatives, as predicting a customer as satisfied and later discovering dissatisfaction is deemed less impactful, precision was selected as the primary metric for model evaluation.
 
 ### Conclusion:
-The best approach to handle outliers is to remove them. In fact, the model's performance is better when the outliers are removed.
+The most effective approach for handling outliers proved to be their removal. Model performance notably improved when outliers were excluded. However, the specific reason behind this improvement remains unclear, as the dataset (as said before) does not really present anomalous values and hence there is no proper reason for outlier removal. Consequently, a selective removal strategy was adopted, focusing only on outliers within the 'Distance' feature, where certain values significantly deviated from the norm ('Arrival Delay in Minutes' and 'Departure Delay in Minutes' were already removed).
 
 ### 2) Hyperparameter Tuning
 
-**Main Purpose:**
-The primary objective of this experiment was to determine the impact of hyperparameter tuning on the performance of the machine learning model. The experiment aims to quantify the impact of hyperparameter tuning on the different model's performance and determine the optimal approach to hyperparameter tuning.
+**Objective:**
+This experiment aimed to assess the impact of hyperparameter tuning on the machine learning model's performance.
 
 **Baseline(s):**
-The baseline for comparison is the model's performance without any hyperparameter tuning. The baseline is used to determine whether the hyperparameter tuning approach improves the model's performance.
+The baseline for comparison involves evaluating the model's performance without any hyperparameter tuning. This baseline serves as a reference point to determine whether hyperparameter tuning enhances the model's performance.
 
-**Evaluation Metric(s):** 
-For the same reason explained in the previous experiment, we decided to consider multiple metrics to evaluate the model's performance, giving more importance to the precision.
+**Evaluation Metric(s):**
+Consistent with the previous experiment, multiple metrics were considered to evaluate the model's performance, with a particular emphasis on precision.
 
 ### Conclusion:
-The best hyperparameters for each model are described in the main notebook. The best approach to hyperparameter tuning is to use the RandomizedSearchCV function to find a good set of hyperparameters, and then use the GridSearchCV function to find the best hyperparameters in a smaller range of values (local maximum).
+Detailed results, including the optimal hyperparameters for each model, are provided in the main notebook. The preferred approach to hyperparameter tuning involved utilizing the RandomizedSearchCV function to identify a promising set of hyperparameters. Subsequently, the GridSearchCV function was employed to pinpoint the best hyperparameters within a narrower range of values, resembling a local maximum.
 
 ### 3) 
 
