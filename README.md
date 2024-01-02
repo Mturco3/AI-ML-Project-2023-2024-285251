@@ -76,11 +76,9 @@ In this section, the only thing we had to decide was the treshold to select feat
 ### 5) Model Building
 As our target variable, 'Satisfied,' is categorical, and our objective is to predict customer satisfaction with the service, our problem falls into the realm of classification. Specifically, since the outcome can be either 'Yes' (satisfied) or 'No' (not satisfied), it is a binary classification problem. Moving forward, we will analyze the following models for addressing this task:
 
-- **Logistic Regression**
-  
-- **Classification Trees**
-  
-- **Random Forest**
+- *Logistic Regression*: picked due to its computational efficiency and explanatory power, acting as a fundamental reference point.
+- *Decision Trees*:sSelected for their capacity to depict non-linear associations and interpretability, negating the necessity for feature scaling.
+- *Random Forest*: an amalgamation of Decision Trees intended to boost efficiency and steadiness, diminishing the likelihood of overfitting while adeptly handling diverse attributes and interactions.
 
 - 5.1) Testing Different Models: to gain an initial understanding before tuning, we calculate the training and validation accuracy for all three models using their default parameters. The primary objective is to establish a general performance overview for each model and create a benchmark for later comparison with results obtained after hyperparameter tuning. This initial assessment provides insight into the models' baseline capabilities and sets the stage for evaluating improvements achieved through further optimization.. 
 - 5.2) Hyperparameter Tuning using Cross Validation: In our quest to optimize the performance of our models, the initial step involved searching for the best hyperparameters using the RandomizedSearchCV function. This method was chosen for its efficiency in exploring a broad hyperparameter space, with the aim of identifying a promising set that significantly enhances model performance. Following this, with the intent of fine-tuning the models with greater precision, we employed the GridSearchCV function. This approach allowed us to focus on a narrower neighborhood around the values identified in the randomized search, resembling the exploration of a local maximum in the hyperparameter space. The goal was to pinpoint the most optimal combination of hyperparameters for our models within this refined range. The detailed results of these hyperparameter tuning efforts, including the selected parameters, their respective values, and the resulting model performance metrics, can be found in the main notebook. This comprehensive analysis provides insights into the impact of hyperparameter choices on model performance and serves as a valuable reference for refining our models in future iterations.
@@ -88,36 +86,32 @@ As our target variable, 'Satisfied,' is categorical, and our objective is to pre
 ### 6) Plotting Learning Curves:
 Learning curves illustrate how a model's performance evolves as it's trained on varying amounts of data, revealing insights into overfitting, underfitting, and the impact of dataset size on model accuracy. Learning curves are crucial because they show how the model's performance varies with the size of the training set. They can reveal issues such as overfitting or underfitting. In addition, they can help us determine whether collecting more data would be useful. In this section, we are going to visualize and comment the learning curves for each model.
 - 6.1) Logistic Regression: The learning curve for the logistic regression model is reported in the following plot: <br>  
-<img src="images/Learning_Curve_Logistic_Regression.png" width="1000" height="600"> <br>  
+<img src="images/Learning_Curve_Logistic_Regression.png" width="500" height="400"> <br>  
 As we can see, the training score and the cross validation score converges to a value that is not really high, indicating that the model is still not enough complex. However, the fact that the results are the same for both the training and the validation set indicates that the model is not overfitting. 
 - 6.2) Decision Tree: The learning curve for the decision tree model is reported in the following plot: <br>  
-<img src="images/Learning_Curve_Decision_Tree.png" width="1000" height="600"> <br>
+<img src="images/Learning_Curve_Decision_Tree.png" width="500" height="400"> <br>
 In this plot, we can observe that the training score is always higher than the cross validation score: decision trees are indeed prone to overfitting. However, even if the training score is higher than the cross validation score, the two scores are really close with a large amount of data, indicating that the model is improving its ability to generalize.
 - 6.3) Random Forest: The learning curve for the random forest model is reported in the following plot: <br>
-<img src="images/Learning_Curve_Random_Forests.png" width="1000" height="600"> <br>
+<img src="images/Learning_Curve_Random_Forests.png" width="500" height="400"> <br>
 In this plot, we can observe that the training score is always higher than the cross validation score: random forests are indeed prone to overfitting. However, in this case the training score is decreasing, indicating that the model is becoming less complex, improving its ability to generalize. In addittion, the performance on unseen data is increasing, indicating, confirming the previous statement.
 
 
 ### 7) Models Evaluation
-- 7.1) Classification metrics: quantitative measures (such as accuracy, precision, recall (sensitivity), F1-score, ROC-AUC) we used to assess the performance of our classification models, providing insights into the model's ability to predict classes accurately, detect true positives, and minimize false predictions. In particular, with the methods *'classification_report'* and *'confusion_matrix'* we computed the following metrics:
-  - Precision: Precision for a given class in multi-class classification is the fraction of instances correctly classified as belonging to a specific class out of all instances the model predicted to belong to that class. 
-  - Sensitivity: Sensitivity in multi-class classification is the fraction of instances in a class that the model correctly classified out of all instances in that class. 
-  - F1-score: The F1 score can be interpreted as a harmonic mean of the precision and recall, where an F1 score reaches its best value at 1 and worst score at 0. The relative contribution of precision and recall to the F1 score are equal.
-  - Macro Average: Macro-averaging calculates each class's performance metric (e.g., precision, recall) and then takes the arithmetic mean across all classes.
-  - Weighted Average: not really useful in this case, since the dataset is balanced.
-  - Accuracy: Accuracy is the fraction of instances the model correctly classified out of all instances.
-- 7.2) Confusion Matrices: a tabular representation to visualize the performance of a classification algorithm, allowing a clear understanding of true positives, true negatives, false positives, and false negatives. This matrices are fundamental for evaluating a model's precision, recall, accuracy, and other classification metrics.
-- 7.3) ROC Curves: (Receiver Operating Characteristic) are graphical representations that illustrate a classification model's performance across various thresholds. They plot the true positive rate (sensitivity) against the false positive rate (1-specificity) for different threshold values, providing a comprehensive overview of a model's ability to distinguish between classes: the area under the ROC curve (AUC-ROC) quantifies the model's overall performance, with a higher AUC indicating better discriminatory power.
-- 7.4) Models Comparison:  We give final thoughts about the three classification models we chose, selecting the most suitable model based on the previous results we found and its predictive capabilities. All the results are reported in the **Results** section and commented in the **Conclusions** section.
+- 7.1) **Classification metrics**: quantitative measures (such as accuracy, precision, recall (sensitivity), F1-score, ROC-AUC) we used to assess the performance of our classification models, providing insights into the model's ability to predict classes accurately, detect true positives, and minimize false predictions. In particular, with the methods *'classification_report'* and *'confusion_matrix'* we computed the following metrics:
+  - **Precision**: Precision for a given class in multi-class classification is the fraction of instances correctly classified as belonging to a specific class out of all instances the model predicted to belong to that class. In general, precision is used to measure the model's ability to correctly identify the positive class and it is essential to minimize false positives.
+  - **Sensitivity**: Sensitivity in multi-class classification is the fraction of instances in a class that the model correctly classified out of all instances in that class. In general, sensitivity is used to measure the model's ability to correctly identify the positive class and it is essential to minimize false negatives.
+  - **F1-score**: The F1 score can be interpreted as a harmonic mean of the precision and recall, where an F1 score reaches its best value at 1 and worst score at 0. The relative contribution of precision and recall to the F1 score are equal.
+  - **Macro Average**: Macro-averaging calculates each class's performance metric (e.g., precision, recall) and then takes the arithmetic mean across all classes.
+  - **Weighted Average**: not really useful in this case, since the dataset is balanced.
+  - **Accuracy**: Accuracy is the fraction of instances the model correctly classified out of all instances.
+- 7.2) **Confusion Matrices**: a tabular representation to visualize the performance of a classification algorithm, allowing a clear understanding of true positives, true negatives, false positives, and false negatives. This matrices are fundamental for evaluating a model's precision, recall, accuracy, and other classification metrics.
+- 7.3) **ROC Curves**: (Receiver Operating Characteristic) are graphical representations that illustrate a classification model's performance across various thresholds. They plot the true positive rate (sensitivity) against the false positive rate (1-specificity) for different threshold values, providing a comprehensive overview of a model's ability to distinguish between classes: the area under the ROC curve (AUC-ROC) quantifies the model's overall performance, with a higher AUC indicating better discriminatory power.
+- 7.4) **Models Comparison**:  We give final thoughts about the three classification models we chose, selecting the most suitable model based on the previous results we found and its predictive capabilities. All the results are reported in the **Results** section and commented in the **Conclusions** section.
 
 
 ## EXPERIMENTAL DESIGN
 
-### Choice of Models and Baseline Development: 
-
-- *Logistic Regression*: picked due to its computational efficiency and explanatory power, acting as a fundamental reference point.
-- *Decision Trees*:sSelected for their capacity to depict non-linear associations and interpretability, negating the necessity for feature scaling.
-- *Random Forest*: an amalgamation of Decision Trees intended to boost efficiency and steadiness, diminishing the likelihood of overfitting while adeptly handling diverse attributes and interactions.
+In this section, we are going to illustrate experiments conducted to demonstrate and validate the target contribution of the project. The experiments are divided into three main sections, each one with a specific objective, baseline(s) and evaluation metric(s). 
 
 ### 1) Handling Outliers
 
@@ -131,12 +125,12 @@ The baseline for comparison involves evaluating the model's performance without 
 Given the absence of a specific optimization goal (e.g., minimizing false positives or false negatives), multiple metrics were considered for assessing model performance. These metrics included accuracy, precision, recall, F1-score, and ROC-AUC score. However, prioritizing the minimization of false positives over false negatives, as predicting a customer as satisfied and later discovering dissatisfaction is deemed less impactful, precision was selected as the primary metric for model evaluation.
 
 ### Conclusion:
-The most effective approach for handling outliers proved to be their removal. Model performance notably improved when outliers were excluded. However, the specific reason behind this improvement remains unclear, as the dataset (as said before) does not really present anomalous values and hence there is no proper reason for outlier removal. Consequently, a selective removal strategy was adopted, focusing only on outliers within the 'Distance' feature, where certain values significantly deviated from the norm ('Arrival Delay in Minutes' and 'Departure Delay in Minutes' were already removed).
+The most effective approach for handling outliers proved to be their removal. Model performance notably improved when outliers were excluded. However, the specific reason behind this improvement remains unclear, as the dataset (as said before) does not really present anomalous values and hence there is no proper reason for outlier removal. Consequently, a selective removal strategy was adopted, focusing only on outliers within the 'Distance' feature, where certain values significantly deviated from the norm ('Arrival Delay in Minutes' and 'Departure Delay in Minutes' were already removed). We firmly believe that this approach is better suited for a broad range of scenarios, and our objective was to construct a model capable of delivering high performance across diverse datasets.
 
 ### 2) Hyperparameter Tuning
 
 **Objective:**
-This experiment aimed to assess the impact of hyperparameter tuning on the machine learning model's performance.
+This experiment aimed to assess the impact of hyperparameter tuning on the machine learning model's performance and to find the optimal set of parameters.
 
 **Baseline(s):**
 The baseline for comparison involves evaluating the model's performance without any hyperparameter tuning. This baseline serves as a reference point to determine whether hyperparameter tuning enhances the model's performance.
@@ -160,25 +154,17 @@ Consistent with the previous experiment, multiple metrics were considered to eva
 
 ### Conclusion:
 
-#### Evaluation Metrics:
-
-- *Accuracy*: Evaluated the models' comprehensive performance.
-- *Precision*: Crucial in reducing false positives in predicting customer contentment.
-- *Recall*: Vital in accurately identifying all dissatisfied instances.
-- *F1-Score*: Offered a balanced measure encompassing precision and recall, particularly critical in an uneven dataset.
-- *ROC-AUC Score*: Assessed the models' capacity to differentiate contented and discontented customers.
-
-All these metrics contributed significantly to a comprehensive model assessment.
+The optimal treshold for feature selection was found to be 0.15. This approach was selected because it yielded the best results in terms of precision, while also retaining a sufficient number of features to ensure a robust model. As a consequence, the features dropped were 'Age', 'Gender', 'Arrival Delay in minutes', 'Departure Delay in minutes', 'Track location rating' and 'Departure Arrival Time Rating'.
 
 ## RESULTS 🥇
 
 After the hyperparameter tuning, we evaluated the models' performance using the metrics described above. The results are summarized in the following plot:  <br>  
-![GETTING STARTED](/images/Comparisson_Classification_Metrics.png)  
+<img src="images/Comparisson_Classification_Metrics.png" width="700" height="300"> <br>  
 <br>For sake of completness, the actual results are reported in the following table:<br>
 
-![GETTING STARTED](images/Metrics_Results.png)  
-<br> As we can see, each metrics shows that the Random Forest model has the best performance, even if the differences with the Decision Tree model are really small. In order to have a better understanding of the models' performance that is also easy to interpret, we plotted the confusion matrices for each model: <br>  
-![GETTING STARTED](images/Confusion_Matrices.png)  
+<img src="images/Metrics_Results.png" width="700" height="400"> <br>
+<br> As we can see, each metrics shows that the Random Forest model has the best performance, even if the differences with the Decision Tree model are really small. In addittion, to enhance our comprehension of the models' performance in a manner that is both insightful and easily interpretable, we visualized the confusion matrices for each model: <br>  
+<img src="images/Confusion_Matrices.png" width="700" height="200"> <br>
 <br> The confusion matrix plots on the y axis the actual value of the target variable for a given set of features and on the x axis the predicted value. It shows the number of true positives (1 on the y axis and 1 on the x axis), true negatives (0 on the y axis and 0 on the x axis), false positives (0 on the y axis and 1 on the x axis) and false negatives (1 on the y axis and 0 on the x axis). In particular, we can observe that the Random Forest model has the best performance, since it has the highest number of true positives and true negatives, and the lowest number of false positives and false negatives.  
 Another relevant metric to evaluate the model's performance is the ROC-AUC score, which is a measure of the model's ability to distinguish between classes. The ROC-AUC score is computed by plotting the true positive rate (sensitivity) against the false positive rate (1-specificity) for different threshold values. The area under the ROC curve (AUC-ROC) quantifies the model's overall performance, with a higher AUC indicating better discriminatory power. The ROC curves for each model are reported in the following plot:  <br>  
 ![GETTING STARTED](/images/ROC_Curves.png)
@@ -187,17 +173,23 @@ Another relevant metric to evaluate the model's performance is the ROC-AUC score
 
 ## CONCLUSIONS 🖋️
 
-## 1) General considerations
+### 1) General considerations
 In general, the dataset seems to be consistent and well structured, since the models built performed well even on the test set (unseen data), also with great results in the last two models. This is a key factor for the project because each conclusion that could be drawn from the analysis of the dataset is reliable and can be used to improve the customer satisfaction.
 
-## 2) Model comparison
-The model with the worst result is linear regression, and we can infere it both by observing the metrics and the confusion matrix. The result is not suprising, since it is highly probable that the dataset is not completely linearly separable. The others two model analyzed, Random Forest and Decision Tree, have similar results, but the Random Forest model is slightly better. In fact, the Random Forest model has a better accuracy, precision, recall and F1-score, and a slightly better ROC-AUC score. However, the computational time of the Random Forest model is much higher than the Decision Tree model, so if we want to train the model on a larger dataset, maybe the Decision Tree model is preferable, especially considering the fact that the differences in the performance of the two models are not so relevant, however, in that case the hyperparameter tuning is even more important to avoid the high risk of overfitting.
+### 2) Model comparison
+The model with the worst result is linear regression, and we can infere it both by observing the metrics and the confusion matrix. The result is not suprising, since it is highly probable that the dataset is not completely linearly separable.  
+The others two model analyzed, Random Forest and Decision Tree, have similar results, but the Random Forest model is slightly better. In fact, the Random Forest model has a better accuracy, precision, recall and F1-score, and a slightly better ROC-AUC score. However, the computational time of the Random Forest model is much higher than the Decision Tree model, so if we want to train the model on a larger dataset, maybe the Decision Tree model is preferable, especially considering the fact that the differences in the performance of the two models are not so relevant. However, in that case the hyperparameter tuning is even more important to avoid the high risk of overfitting.
+Another important result we can observe is that precision is the highest metric for each model, which is a good thing since we wanted to minimize the number of false positives.  <br>  
 
-## 3) Analysis of the most important features
+<img src="images/Metrics_Results.png" width="700" height="400"> <br>  
+In the case of the Random Forest model, we have the best result, with a precision of 0.97. However, this is also due to the fact that the dataset is not completely balanced, since the ratio satisfied/ total number of customers is 0.42.
+
+### 3) Analysis of the most important features
 Since we wanted to actually understand the reasons behind the customer satisfaction, we decided to analyze the most important features for each model, assuming that one of the goal of the project is to improve the overall customer satisfaction and hence to understand in which area improvements are needed the most.  
 For random forest and decision tree, feature importance scores represent the contribution of each feature to predictive performance, with a range typically between 0 and 1. In the case of logistic regression, the coefficients indicate the strength and direction of feature influence, with an unbounded range.
-The most important features for decision tree and random forests are reported in the following table: <br>
-![GETTING STARTED](/images/Features_random_forests.png)<br>  
-Since the coefficients for the logistic regression are scaled differently from the other two models, we decided to plot the coefficients for the logistic regression model in a separate plot: <br>
-![GETTING STARTED](/images/Coefficients_logistic_regression.png)<br>  
+The most important features for decision tree and random forests are reported in the following table: <br>  
 
+<img src="images/Features_random_forests.png" width="1000" height="600"><br>  
+Since the coefficients for the logistic regression are scaled differently from the other two models, we decided to plot the coefficients for the logistic regression model in a separate plot: <br>  
+<img src="images/Coefficients_logistic_regression.png" width="1000" height="600"><br>  
+As we can see, in every case the most important features are 'Boarding Rating' and 'Work or Leisure'. We were not surprised by the fact that 'Boarding Rating' is the most important feature, since it is the first impression the customer has of the service. However, we were surprised by the fact that 'Work or Leisure' is the second most important feature, since we thought that the reason behind the customer satisfaction was related to the quality of the service and not to the reason of the travel. For this reason, we conducted a further analysis on this feature.
