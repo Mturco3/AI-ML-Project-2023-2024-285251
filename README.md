@@ -49,10 +49,10 @@ After that, we focused on the categorical features, trying to understand how the
   - Work or Leisure: Whether a customer is traveling for work reasons or not. There is an higher number of **work-related travels**.
   - Satisfied: Our target variable. **Not Satisfied** is the most common value in the 'Satisfied' column.  
 - 2.2) **Univariate Analysis**: univariate analysis scrutinizes individual variables, exploring their distributions and patterns focusing solely on one variable at a time to understand its behavior and properties within a dataset. At first, we plotted histograms for each numerical feature, in order to understand the distribution of the data. The results are reported in the following plot: <br>  
-![HISTOGRAMS](images\Histograms_numerical.png) <br>  
+![HISTOGRAMS](images/Histograms_numerical.png) <br>  
 The plots show that customer ratings for onboard services generally skewed high, indicating overall customer satisfaction with the ThomasTrain company's services. In contrast, features like 'Food'n'Drink Rating', 'Seat Comfort Rating', and 'Legroom Service Rating' displayed more diverse customer opinions. Both 'Departure Delay in Minutes' and 'Arrival Delay in Minutes' showed a preponderance of short delays, with occasional longer delays that could significantly impact customer satisfaction. The distribution of 'Distance' suggested that most travels were short, but with enough long-distance trips to merit separate consideration for their impact on satisfaction levels.  
 After that, we plotted barplots for each categorical feature, in order to visualize the results previously stated: <br>  
-![GETTING STARTED](images\Plots_categorical.png)  
+![GETTING STARTED](images/Plots_categorical.png)  
 <br> 
 
 - 2.3) **Correlation Analysis**: evaluates the relationship between categorical, numerical variables and the target variable, to understand which features were more impactful and correlated with the target variable. The results are reported in the following correlation heatmap: <br>  
