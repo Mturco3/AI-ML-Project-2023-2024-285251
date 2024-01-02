@@ -7,7 +7,7 @@
 - Simone Angelo Meli (289631)
 - Michele Turco (285251)
 
-<img source="images\Correlation_Matrix.png" alt="Lol">
+<img source="https://github.com/Mturco3/AI-ML-Project-2023-2024/blob/main/images/Boxplot.png" alt="Lol">
 
 ## INTRODUCTION ✍️
 
