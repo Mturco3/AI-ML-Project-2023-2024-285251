@@ -87,13 +87,13 @@ As our target variable, 'Satisfied,' is categorical, and our objective is to pre
 Learning curves illustrate how a model's performance evolves as it's trained on varying amounts of data, revealing insights into overfitting, underfitting, and the impact of dataset size on model accuracy. Learning curves are crucial because they show how the model's performance varies with the size of the training set. They can reveal issues such as overfitting or underfitting. In addition, they can help us determine whether collecting more data would be useful. In this section, we are going to visualize and comment the learning curves for each model.
 - 6.1) Logistic Regression: The learning curve for the logistic regression model is reported in the following plot: <br>  
 <img src="images/Learning_Curve_Logistic_Regression.png" width="500" height="400"> <br>  
-As we can see, the training score and the cross validation score converges to a value that is not really high, indicating that the model is still not enough complex. However, the fact that the results are the same for both the training and the validation set indicates that the model is not overfitting. 
+As we can see, the learning curve present a strange behavior: the training score is at its maximum with a lower amount of data, then it starts decreasing (maybe because the model becoming less complex). This idea is supported by the fact that the learning curve is initially increasing in the validation set. However, the two curves converges at the value 0.87, which is not a really bad result. In addition, since the performance on unseen data is increasing, the model is improving its ability to generalize.
 - 6.2) Decision Tree: The learning curve for the decision tree model is reported in the following plot: <br>  
 <img src="images/Learning_Curve_Decision_Tree.png" width="500" height="400"> <br>
 In this plot, we can observe that the training score is always higher than the cross validation score: decision trees are indeed prone to overfitting. However, even if the training score is higher than the cross validation score, the two scores are really close with a large amount of data, indicating that the model is improving its ability to generalize.
 - 6.3) Random Forest: The learning curve for the random forest model is reported in the following plot: <br>
 <img src="images/Learning_Curve_Random_Forests.png" width="500" height="400"> <br>
-In this plot, we can observe that the training score is always higher than the cross validation score: random forests are indeed prone to overfitting. However, in this case the training score is decreasing, indicating that the model is becoming less complex, improving its ability to generalize. In addittion, the performance on unseen data is increasing, indicating, confirming the previous statement.
+In this plot, we can observe that the training score is almost constant: the model is slightly overfitting, even if the validation score is increasing and its value is higher than the validation score of the decision tree model. In addition, the two curves are starting to converge, indicating that the model is improving its ability to generalize.
 
 
 ### 7) Models Evaluation
@@ -167,7 +167,7 @@ After the hyperparameter tuning, we evaluated the models' performance using the 
 <img src="images/Confusion_Matrices.png" width="700" height="200"> <br>
 <br> The confusion matrix plots on the y axis the actual value of the target variable for a given set of features and on the x axis the predicted value. It shows the number of true positives (1 on the y axis and 1 on the x axis), true negatives (0 on the y axis and 0 on the x axis), false positives (0 on the y axis and 1 on the x axis) and false negatives (1 on the y axis and 0 on the x axis). In particular, we can observe that the Random Forest model has the best performance, since it has the highest number of true positives and true negatives, and the lowest number of false positives and false negatives.  
 Another relevant metric to evaluate the model's performance is the ROC-AUC score, which is a measure of the model's ability to distinguish between classes. The ROC-AUC score is computed by plotting the true positive rate (sensitivity) against the false positive rate (1-specificity) for different threshold values. The area under the ROC curve (AUC-ROC) quantifies the model's overall performance, with a higher AUC indicating better discriminatory power. The ROC curves for each model are reported in the following plot:  <br>  
-![GETTING STARTED](/images/ROC_Curves.png)
+<img src="images/ROC_Curves.png" width="700" height="400"> <br>
 
 
 
@@ -182,14 +182,16 @@ The others two model analyzed, Random Forest and Decision Tree, have similar res
 Another important result we can observe is that precision is the highest metric for each model, which is a good thing since we wanted to minimize the number of false positives.  <br>  
 
 <img src="images/Metrics_Results.png" width="700" height="400"> <br>  
-In the case of the Random Forest model, we have the best result, with a precision of 0.97. However, this is also due to the fact that the dataset is not completely balanced, since the ratio satisfied/ total number of customers is 0.42.
+In the case of the Random Forest model, we have the best result, with a precision of 0.97. However, this is also due to the fact that the dataset is not completely balanced, since the ratio satisfied/ total number of customers is 0.42 and this could be a reason for the lower number of false positives. 
 
 ### 3) Analysis of the most important features
 Since we wanted to actually understand the reasons behind the customer satisfaction, we decided to analyze the most important features for each model, assuming that one of the goal of the project is to improve the overall customer satisfaction and hence to understand in which area improvements are needed the most.  
 For random forest and decision tree, feature importance scores represent the contribution of each feature to predictive performance, with a range typically between 0 and 1. In the case of logistic regression, the coefficients indicate the strength and direction of feature influence, with an unbounded range.
 The most important features for decision tree and random forests are reported in the following table: <br>  
 
-<img src="images/Features_random_forests.png" width="1000" height="600"><br>  
+<img src="images/Features_random_forests.png" width="800" height="600"><br>  
 Since the coefficients for the logistic regression are scaled differently from the other two models, we decided to plot the coefficients for the logistic regression model in a separate plot: <br>  
-<img src="images/Coefficients_logistic_regression.png" width="1000" height="600"><br>  
-As we can see, in every case the most important features are 'Boarding Rating' and 'Work or Leisure'. We were not surprised by the fact that 'Boarding Rating' is the most important feature, since it is the first impression the customer has of the service. However, we were surprised by the fact that 'Work or Leisure' is the second most important feature, since we thought that the reason behind the customer satisfaction was related to the quality of the service and not to the reason of the travel. For this reason, we conducted a further analysis on this feature.
+<img src="images/Coefficients_logistic_regression.png" width="800" height="600"><br>  
+As we can see, in every case the most important features are 'Boarding Rating' and 'Work or Leisure'. We were not surprised by the fact that 'Boarding Rating' is the most important feature, since it is the first impression the customer has of the service. However, we were surprised by the fact that 'Work or Leisure' is the second most important feature, since we thought that the reason behind the customer satisfaction was related to the quality of the service and not to the reason of the travel. For this reason, we conducted a further analysis on this feature.  <br>  
+<img src="images/Work_Leisure.png" width="600" height="400"><br>  
+As evident from the analysis, customers traveling for leisure purposes consistently express lower satisfaction with the service. This observation may stem from the heightened expectations of leisure travelers, who tend to be more discerning compared to those traveling for work. It's plausible that these customers, in an effort to manage expenses, prioritize cost-effective ticket options. Furthermore, leisure travelers often journey with family members, rendering them more attuned to service quality and consequently, more sensitive to their overall experience.
