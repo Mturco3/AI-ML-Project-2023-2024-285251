@@ -16,10 +16,6 @@ The dataset provided holds the key to unveiling the subtle cues and patterns tha
 
 Through meticulous analysis of this dataset, we aim to bridge the gap between customer experiences and tangible insights. Our focus on understanding the unspoken factors influencing satisfaction levels will empower us to make informed decisions. By unraveling these nuances, we aspire to transform this understanding into actionable strategies that resonate with our customers, making their journey with ThomasTrain an exceptional one.
 
-## METHODS 2
-
-### 1) Understanding the dataset  
-
 
 ## METHODS
 
@@ -58,10 +54,13 @@ The plots show that customer ratings for onboard services generally skewed high,
 After that, we plotted barplots for each categorical feature, in order to visualize the results previously stated: <br>  
 ![GETTING STARTED](images\Plots_categorical.png)  
 <br> 
+
 - 2.3) **Correlation Analysis**: evaluates the relationship between categorical, numerical variables and the target variable, to understand which features were more impactful and correlated with the target variable. The results are reported in the following correlation heatmap: <br>  
 ![HEATMAP](images\Heatmap_Correlation.png)
+
 ### 3) Feature selection:
 since there were many features that are not really correlated with the target variable, we drop them, since they are not relevant to train the model.
+
 ### 4) Praparing data for modeling
 - 4.1) Encoding Categorical Variables:we convert categorical variables into a format suitable for modeling;
 - 4.2) Removing Outliers: we used the two-steps approach to find and remove the outliers;
@@ -69,12 +68,15 @@ since there were many features that are not really correlated with the target va
 - 4.4) Distribution of the target variable in the different sets: The ratio between the two classes is the same in both the training and the test set. This is a good thing, since it means that the model will be trained on a balanced dataset and will be able to generalize well. In addittion, we do not have to deal with stratification (splitting the dataset mantaining a balanced ratio between the two classes);
 - 4.5) Feature Scaling (Fit and Transform)  we apply fit_transform on the training set and transform on the test set in order to standardize the data.
 - 4.6) Creating a Validation Set: the main reason for creating a separate validation set is to have an unbiased evaluation of a model fit on the training dataset;
+
 ### 5) Model Building
 - Model selection: for our classification task we chose Logistic Regression, Decision Tree, and Random Forest;
 - 5.1) Testing Different Models: to have an overview before the tuning, we compute the training and the validation accuracy for all the three models;
 - 5.2) Hyperparameter Tuning Using Cross-Validation: as a first step, we searched the best hyperparameters for the model using the RandomizedSearchCV function (this allowed us to explicitly control the number of parameter combinations that are attempted);
+
 ### 6) Plotting Learning Curves:
 Learning curves illustrate how a model's performance evolves as it's trained on varying amounts of data, revealing insights into overfitting, underfitting, and the impact of dataset size on model accuracy.
+
 ### 7) Models Evaluation
 - 7.1) Classification metrics: quantitative measures (such as accuracy, precision, recall, F1-score, ROC-AUC) we used to assess the performance of our classification models, providing insights into the model's ability to predict classes accurately, detect true positives, and minimize false predictions. 
 
