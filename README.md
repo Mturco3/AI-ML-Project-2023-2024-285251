@@ -7,7 +7,7 @@
 - Simone Angelo Meli (289631)
 - Michele Turco (285251)
 
-<img source="https://github.com/Mturco3/AI-ML-Project-2023-2024/blob/main/images/Boxplot.png" alt="Lol">
+<img src="images\Boxplot.png" alt="lol" width="300" height="200">
 
 ## INTRODUCTION ✍️
 
@@ -49,17 +49,17 @@ After that, we focused on the categorical features, trying to understand how the
   - Work or Leisure: Whether a customer is traveling for work reasons or not. There is an higher number of **work-related travels**.
   - Satisfied: Our target variable. **Not Satisfied** is the most common value in the 'Satisfied' column.  
 - 2.2) **Univariate Analysis**: univariate analysis scrutinizes individual variables, exploring their distributions and patterns focusing solely on one variable at a time to understand its behavior and properties within a dataset. At first, we plotted histograms for each numerical feature, in order to understand the distribution of the data. The results are reported in the following plot: <br>  
-![HISTOGRAMS](images/Histograms_numerical.png) <br>  
+<img src="images/Histograms_numerical.png" alt="Hist" width="500" height="500"> <br>  
 The plots show that customer ratings for onboard services generally skewed high, indicating overall customer satisfaction with the ThomasTrain company's services. In contrast, features like 'Food'n'Drink Rating', 'Seat Comfort Rating', and 'Legroom Service Rating' displayed more diverse customer opinions. Both 'Departure Delay in Minutes' and 'Arrival Delay in Minutes' showed a preponderance of short delays, with occasional longer delays that could significantly impact customer satisfaction. The distribution of 'Distance' suggested that most travels were short, but with enough long-distance trips to merit separate consideration for their impact on satisfaction levels.  
 After that, we plotted barplots for each categorical feature, in order to visualize the results previously stated: <br>  
-![GETTING STARTED](images/Plots_categorical.png)  
+<img src="images/Plots_categorical.png" width="1000" height="200"> 
 <br>   
 - 2.3) **Outliers detection**: outliers are relevant to build our model since they can negatively affect the performance, so as a first step, we  plotted boxplots in order to have a general idea on what is going on. The results are reported in the following plot: <br>  
-![BOXPLOT](images/Boxplot.png) <br>  
+<img src="images\Boxplot.png" alt="lol" width="1000" height="500"> <br>  
 As we can see, there are many outliers in the 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' features, confirming the previous hypothesis. Another feature that present some outliers is 'Distance', but in this case the outliers are as relevant as before, since the maximum value is 4983, which is not so far from the 75% percentile (1359). The other features have a range between 1 and 5, hence the outliers are not anomalous values at all. 
 - 2.4) **Encoding Categorical Variables**: we converted categorical variables into a format suitable for modeling, so that it was possible to plot a correlation matrix and understand the relationship between the features and the target variable. Furthermore, there are only 5 categorical features and they are quite easy to encode. Indeed, as seen before, 4 of them are binary variables ('Gender', 'Satisfied', 'Loyalty', 'Work or Leisure'), while the last one has 3 possible values ('Ticket Class'). As a consequence, we decided to use one-hot encoding for the first 4 features and ordinal encoding for the last one. One-hot encoding is used for these variables because it transforms each category into a binary value (0 or 1), creating a new binary column for each category. Label encoding is used for 'Ticket Class' because it represents an ordinal variable with a clear order or hierarchy among the categories ('Economy', 'Smart', 'Premium'). Label encoding assigns a unique numerical value to each category, preserving the order of the classes.
 - 2.5) **Correlation Analysis**: evaluates the relationship between categorical, numerical variables and the target variable, to understand which features were more impactful and correlated with the target variable. The results are reported in the following correlation heatmap: <br>  
-![HEATMAP](images/Correlation_target.png) <br>  
+<img src="images/Correlation_target.png" width="1000" height= "500"> <br>  
 The outcomes related to the 'Age' and 'Gender' features are unsurprising, given their limited influence on customer satisfaction. It's conceivable that these factors,  may have minimal impact and could potentially be omitted from further analysis together with 'Ticket ID' and 'Date and Time'. Contrastingly, the unexpected low correlation between 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' and customer satisfaction warrants closer examination. Despite the perceived relevance of these features, the results from Exploratory Data Analysis (EDA) reveal noteworthy insights. Both features exhibit a remarkably low average value, with a left-skewed distribution characterized by numerous values close to zero and a handful of considerably higher values. This distribution nuance sheds light on the low correlation observed with the target variable. In instances where the majority of delay values are in proximity to zero, the impact on customer satisfaction is negligible for the most part. Retaining these features might incur unnecessary computational costs for the model, without commensurate improvements in predictive performance.
 
 ### 3) Feature selection:
@@ -88,13 +88,13 @@ As our target variable, 'Satisfied,' is categorical, and our objective is to pre
 ### 6) Plotting Learning Curves:
 Learning curves illustrate how a model's performance evolves as it's trained on varying amounts of data, revealing insights into overfitting, underfitting, and the impact of dataset size on model accuracy. Learning curves are crucial because they show how the model's performance varies with the size of the training set. They can reveal issues such as overfitting or underfitting. In addition, they can help us determine whether collecting more data would be useful. In this section, we are going to visualize and comment the learning curves for each model.
 - 6.1) Logistic Regression: The learning curve for the logistic regression model is reported in the following plot: <br>  
-![GETTING STARTED](/images/Learning_Curve_Logistic_Regression.png) <br>  
+<img src="images/Learning_Curve_Logistic_Regression.png" width="1000" height="600"> <br>  
 As we can see, the training score and the cross validation score converges to a value that is not really high, indicating that the model is still not enough complex. However, the fact that the results are the same for both the training and the validation set indicates that the model is not overfitting. 
 - 6.2) Decision Tree: The learning curve for the decision tree model is reported in the following plot: <br>  
-![GETTING STARTED](/images/Learning_Curve_Decision_Tree.png) <br>
+<img src="images/Learning_Curve_Decision_Tree.png" width="1000" height="600"> <br>
 In this plot, we can observe that the training score is always higher than the cross validation score: decision trees are indeed prone to overfitting. However, even if the training score is higher than the cross validation score, the two scores are really close with a large amount of data, indicating that the model is improving its ability to generalize.
 - 6.3) Random Forest: The learning curve for the random forest model is reported in the following plot: <br>
-![GETTING STARTED](/images/Learning_Curve_Random_Forests.png) <br>
+<img src="images/Learning_Curve_Random_Forests.png" width="1000" height="600"> <br>
 In this plot, we can observe that the training score is always higher than the cross validation score: random forests are indeed prone to overfitting. However, in this case the training score is decreasing, indicating that the model is becoming less complex, improving its ability to generalize. In addittion, the performance on unseen data is increasing, indicating, confirming the previous statement.
 
 
