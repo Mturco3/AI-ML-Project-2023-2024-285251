@@ -78,7 +78,7 @@ In this section, the only thing we had to decide was the treshold to select feat
 As our target variable, 'Satisfied,' is categorical, and our objective is to predict customer satisfaction with the service, our problem falls into the realm of classification. Specifically, since the outcome can be either 'Yes' (satisfied) or 'No' (not satisfied), it is a binary classification problem. Moving forward, we will analyze the following models for addressing this task:
 
   - *Logistic Regression*: picked due to its computational efficiency and explanatory power, acting as a fundamental reference point.
-  - *Decision Trees*:sSelected for their capacity to depict non-linear associations and interpretability, negating the necessity for feature scaling.
+  - *Decision Trees*: Selected for their capacity to depict non-linear associations and interpretability, negating the necessity for feature scaling.
   - *Random Forest*: an amalgamation of Decision Trees intended to boost efficiency and steadiness, diminishing the likelihood of overfitting while adeptly handling diverse attributes and interactions.
 
 - 5.1) **Testing Different Models**: to gain an initial understanding before tuning, we calculate the training and validation accuracy for all three models using their default parameters. The primary objective is to establish a general performance overview for each model and create a benchmark for later comparison with results obtained after hyperparameter tuning. This initial assessment provides insight into the models' baseline capabilities and sets the stage for evaluating improvements achieved through further optimization.. 
