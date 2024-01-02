@@ -7,8 +7,6 @@
 - Simone Angelo Meli (289631)
 - Michele Turco (285251)
 
-<img src="images\Boxplot.png" alt="lol" width="300" height="200">
-
 ## INTRODUCTION ✍️
 
 In the realm of ThomasTrain, our project revolves around deciphering customer satisfaction without directly soliciting feedback. Armed with the "trains_dataset.csv," our mission is to unravel the factors underlying customer contentment. This endeavor holds immense value for our marketing endeavors as it equips us to pinpoint the elements that keep our patrons delighted. Understanding their satisfaction levels allows us to tailor promotions effectively, ensuring a stronger retention rate and fostering lasting relationships with our clientele.
