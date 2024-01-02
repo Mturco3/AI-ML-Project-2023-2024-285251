@@ -7,6 +7,7 @@
 - Simone Angelo Meli (289631)
 - Michele Turco (285251)
 
+<img source="images\Correlation_Matrix.png">
 
 ## INTRODUCTION
 
@@ -39,7 +40,11 @@ The project is divided into 7 main steps, which are described in the following s
 ### 2) EDA for feature understanding
 As a first step, we had to distinguish categorical and numerical features, since they are treated differently in the EDA. In particular, we found out that there are 5 categorical features and 18 numerical features ("Date and Time"  and "Ticket ID" were removed in the previous step).
 
-- 2.1) **Descriptive statistics**: this statistics summary, unig *'.describe().T*, only considers numerical features and gives a high-level idea to identify whether the data has any outliers, data entry error, distribution of data such as the data is normally distributed or left/right skewed. The results showed what we already knew from the boxplots, that is the presence of outliers in the 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' features. In addittion, we could see that the average is really low for both the features (15 and 14 minutes). Considering the others numerical features, we can observe a balanced distribution, with the average value that is often not so far from the median value.  
+- 2.1) **Descriptive Statistics Analysis**: The descriptive statistics summary, obtained through the `'.describe().T` method, primarily focuses on numerical features, providing a comprehensive overview to identify potential outliers, data entry errors, and the distribution characteristics of the data, such as normality or skewness. In this analysis, specific attention was drawn to the 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' features.
+
+An intriguing observation emerges from the results, particularly in relation to these two features. Despite the relatively low average values (15 and 14 minutes, respectively) and the fact that nearly 75% of the data falls below 10 minutes, there are notable instances where values deviate significantly from the norm. Notably, the maximum recorded 'Arrival Delay in Minutes' stands at 1584, while 'Departure Delay in Minutes' reaches a maximum of 1592. This suggests a non-uniform distribution with some instances of substantial delays, potentially warranting further investigation.
+
+In contrast, the analysis of other numerical features reveals a more balanced distribution. The average values across these features tend to align closely with the median values, indicative of a symmetrical distribution. This balanced distribution implies a consistent pattern across these variables, contrasting with the anomalous behavior observed in the 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' features.  
 After that, we focused on the categorical features, trying to understand how they are distributed and the most frequent value. The names of the columns are pretty self-explanatory:  
   - Ticket class: The class in which the customers chose to travel. **'Premium'** is the most common value, indicating a potential preference.  
   - Loyaly: whether a customer is loyal or not. A significant proportion of the dataset is marked as **'Loyal'**, which could be indicative of a successful loyalty program or repeated use of the service by the customers.  
