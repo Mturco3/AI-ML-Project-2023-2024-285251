@@ -7,7 +7,7 @@
 - Simone Angelo Meli (289631)
 - Michele Turco (285251)
 
-<img source="images\Correlation_Matrix.png">
+<img source="images\Correlation_Matrix.png" alt="Lol">
 
 ## INTRODUCTION ✍️
 
@@ -40,11 +40,8 @@ The project is divided into 7 main steps, which are described in the following s
 ### 2) EDA for feature understanding
 As a first step, we had to distinguish categorical and numerical features, since they are treated differently in the EDA. In particular, we found out that there are 5 categorical features and 18 numerical features ("Date and Time"  and "Ticket ID" were removed in the previous step).
 
-- 2.1) **Descriptive Statistics Analysis**: The descriptive statistics summary, obtained through the `'.describe().T` method, primarily focuses on numerical features, providing a comprehensive overview to identify potential outliers, data entry errors, and the distribution characteristics of the data, such as normality or skewness. In this analysis, specific attention was drawn to the 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' features.
-
-An intriguing observation emerges from the results, particularly in relation to these two features. Despite the relatively low average values (15 and 14 minutes, respectively) and the fact that nearly 75% of the data falls below 10 minutes, there are notable instances where values deviate significantly from the norm. Notably, the maximum recorded 'Arrival Delay in Minutes' stands at 1584, while 'Departure Delay in Minutes' reaches a maximum of 1592. This suggests a non-uniform distribution with some instances of substantial delays, potentially warranting further investigation.
-
-In contrast, the analysis of other numerical features reveals a more balanced distribution. The average values across these features tend to align closely with the median values, indicative of a symmetrical distribution. This balanced distribution implies a consistent pattern across these variables, contrasting with the anomalous behavior observed in the 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' features.  
+- 2.1) **Descriptive Statistics Analysis**: The descriptive statistics summary, obtained through the `'.describe().T` method, primarily focuses on numerical features, providing a comprehensive overview to identify potential outliers, data entry errors, and the distribution characteristics of the data, such as normality or skewness. In this analysis, specific attention was drawn to the 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' features. An intriguing observation emerges from the results, particularly in relation to these two features. Despite the relatively low average values (15 and 14 minutes, respectively) and the fact that nearly 75% of the data falls below 10 minutes, there are notable instances where values deviate significantly from the norm. Notably, the maximum recorded 'Arrival Delay in Minutes' stands at 1584, while 'Departure Delay in Minutes' reaches a maximum of 1592.  
+This suggests a non-uniform distribution with some instances of substantial delays, potentially warranting further investigation. In contrast, the analysis of other numerical features reveals a more balanced distribution. The average values across these features tend to align closely with the median values, indicative of a symmetrical distribution. This balanced distribution implies a consistent pattern across these variables, contrasting with the anomalous behavior observed in the 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' features.  
 After that, we focused on the categorical features, trying to understand how they are distributed and the most frequent value. The names of the columns are pretty self-explanatory:  
   - Ticket class: The class in which the customers chose to travel. **'Premium'** is the most common value, indicating a potential preference.  
   - Loyaly: whether a customer is loyal or not. A significant proportion of the dataset is marked as **'Loyal'**, which could be indicative of a successful loyalty program or repeated use of the service by the customers.  
@@ -59,11 +56,11 @@ After that, we plotted barplots for each categorical feature, in order to visual
 <br>   
 - 2.3) **Outliers detection**: outliers are relevant to build our model since they can negatively affect the performance, so as a first step, we  plotted boxplots in order to have a general idea on what is going on. The results are reported in the following plot: <br>  
 ![BOXPLOT](images/Boxplot.png) <br>  
-As we can see, there are many outliers in the 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' features. Even if almost than 75% of the values are less than 10, there are some values that are much higher than the others. In particular, the maximum value for 'Arrival Delay in Minutes' is 1584, while the maximum value for 'Departure Delay in Minutes' is 1592. Another feature that present some outliers is 'Distance', but in this case the outliers are not so relevant, since the maximum value is 4983, which is not so far from the 75% percentile (1359). The other features have a range between 1 and 5, hence the outliers are not so relevant for these features. 
+As we can see, there are many outliers in the 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' features, confirming the previous hypothesis. Another feature that present some outliers is 'Distance', but in this case the outliers are as relevant as before, since the maximum value is 4983, which is not so far from the 75% percentile (1359). The other features have a range between 1 and 5, hence the outliers are not anomalous values at all. 
 - 2.4) **Encoding Categorical Variables**: we converted categorical variables into a format suitable for modeling, so that it was possible to plot a correlation matrix and understand the relationship between the features and the target variable. Furthermore, there are only 5 categorical features and they are quite easy to encode. Indeed, as seen before, 4 of them are binary variables ('Gender', 'Satisfied', 'Loyalty', 'Work or Leisure'), while the last one has 3 possible values ('Ticket Class'). As a consequence, we decided to use one-hot encoding for the first 4 features and ordinal encoding for the last one. One-hot encoding is used for these variables because it transforms each category into a binary value (0 or 1), creating a new binary column for each category. Label encoding is used for 'Ticket Class' because it represents an ordinal variable with a clear order or hierarchy among the categories ('Economy', 'Smart', 'Premium'). Label encoding assigns a unique numerical value to each category, preserving the order of the classes.
 - 2.5) **Correlation Analysis**: evaluates the relationship between categorical, numerical variables and the target variable, to understand which features were more impactful and correlated with the target variable. The results are reported in the following correlation heatmap: <br>  
 ![HEATMAP](images/Correlation_target.png) <br>  
-The result on the features 'Age' and 'Gender' is not really surprising, since they are hardly a factor that influences customer satisfaction (maybe they could have been also removed with 'Ticket ID' and 'Date and Time'). On the other hand, the features 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' are commonly considered more relevant and hence a correlation that is so low was not really expected. However, considering the results of the EDA, we can observe that the average value for both the features is really low (15 and 14 minutes), and the distribution is skewed to the left, with a lot of values that are close to 0 and a few values that are much higher than the others. This could explain the low correlation with the target variable: since most of the values are close to 0 the feature had no impact on the customer satisfaction in the most of the cases and hence keeping those features would have been too much resource consuming for the model, without any relevant improvement in the performance.
+The outcomes related to the 'Age' and 'Gender' features are unsurprising, given their limited influence on customer satisfaction. It's conceivable that these factors,  may have minimal impact and could potentially be omitted from further analysis together with 'Ticket ID' and 'Date and Time'. Contrastingly, the unexpected low correlation between 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' and customer satisfaction warrants closer examination. Despite the perceived relevance of these features, the results from Exploratory Data Analysis (EDA) reveal noteworthy insights. Both features exhibit a remarkably low average value, with a left-skewed distribution characterized by numerous values close to zero and a handful of considerably higher values. This distribution nuance sheds light on the low correlation observed with the target variable. In instances where the majority of delay values are in proximity to zero, the impact on customer satisfaction is negligible for the most part. Retaining these features might incur unnecessary computational costs for the model, without commensurate improvements in predictive performance.
 
 ### 3) Feature selection:
 In this section, the only thing we had to decide was the treshold to select features to use to train the model. We simply tried to find the best value empirically, conducting an experiment that is explained in the **Experimental Design** section. The optimal result was obtained with a treshold of 0.15. As a consequence, the features dropped were: 'Gender', 'Arrival Delay in Minutes', 'Departure Delay in Minutes' and 'Age'.  
@@ -150,7 +147,18 @@ Consistent with the previous experiment, multiple metrics were considered to eva
 ### Conclusion:
 Detailed results, including the optimal hyperparameters for each model, are provided in the main notebook. The preferred approach to hyperparameter tuning involved utilizing the RandomizedSearchCV function to identify a promising set of hyperparameters. Subsequently, the GridSearchCV function was employed to pinpoint the best hyperparameters within a narrower range of values, resembling a local maximum.
 
-### 3) 
+### 3) Feature Selection
+
+**Objective:**
+This experiment aimed to assess the best approach for feature selection, identifying the optimal treshold.
+
+**Baseline(s):**
+The baseline for comparison involves evaluating the model's performance without any feature selection. This baseline serves as a reference point to determine whether feature selection enhances the model's performance.
+
+**Evaluation Metric(s):**
+Consistent with the previous experiment, multiple metrics were considered to evaluate the model's performance, with a particular emphasis on precision.
+
+### Conclusion:
 
 #### Evaluation Metrics:
 
