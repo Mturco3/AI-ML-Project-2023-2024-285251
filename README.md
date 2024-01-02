@@ -57,23 +57,35 @@ After that, we plotted barplots for each categorical feature, in order to visual
 For categorical variables, we decided to compute correlation with the target variable Cramér's V, which is based on a nominal variation of Pearson’s Chi-Square Test. It is an association measure for nominal random variables, giving a value between 0 and 1 (0 means no association, 1 is full association).  
 
 - 2.3) **Correlation Analysis**: evaluates the relationship between categorical, numerical variables and the target variable, to understand which features were more impactful and correlated with the target variable. The results are reported in the following correlation heatmap: <br>  
-![HEATMAP](images/Heatmap_Correlation.png)
+![HEATMAP](images/Correlation_Matrix.png) <br>  
+The result on the features 'Age' and 'Gender' si not really surprising, since it is herdly a factor that influences customer satisfaction. On the other hand, the features 'Arrival Delay in Minutes' and 'Departure Delay in Minutes' are commonly considered more relevant and hence a correlation that is so low was not really expected. However, considering the results of the EDA, we can observe that the average value for both the features is really low (15 and 14 minutes), and the distribution is skewed to the left, with a lot of values that are close to 0 and a few values that are much higher than the others. This could explain the low correlation with the target variable: since most of the values are close to 0 the feature had no impact on the customer satisfaction in the most of the cases and hence keeping those features would have been too much resource consuming for the model, without any relevant improvement in the performance.
 
 ### 3) Feature selection:
-In this section, the only thing we had to decide was the treshold to select features to use to train the model. We simply tried to find the best value empirically, conducting an experiment that is explained in the **Experimental Design** section. The optimal result was obtained with a treshold of 0.15. As a consequence, the features dropped were: 
+In this section, the only thing we had to decide was the treshold to select features to use to train the model. We simply tried to find the best value empirically, conducting an experiment that is explained in the **Experimental Design** section. The optimal result was obtained with a treshold of 0.15. As a consequence, the features dropped were: 'Gender', 'Arrival Delay in Minutes', 'Departure Delay in Minutes' and 'Age'.  
 
 ### 4) Praparing data for modeling
-- 4.1) Encoding Categorical Variables:we convert categorical variables into a format suitable for modeling;
-- 4.2) Removing Outliers: we used the two-steps approach to find and remove the outliers;
-- 4.3) Data Splitting: we generated a training set containing 75% of the observations and a test set containing the remaining 25%.
-- 4.4) Distribution of the target variable in the different sets: The ratio between the two classes is the same in both the training and the test set. This is a good thing, since it means that the model will be trained on a balanced dataset and will be able to generalize well. In addittion, we do not have to deal with stratification (splitting the dataset mantaining a balanced ratio between the two classes);
-- 4.5) Feature Scaling (Fit and Transform)  we apply fit_transform on the training set and transform on the test set in order to standardize the data.
-- 4.6) Creating a Validation Set: the main reason for creating a separate validation set is to have an unbiased evaluation of a model fit on the training dataset;
+- 4.1) Encoding Categorical Variables: we converted categorical variables into a format suitable for modeling. 
+- 4.2) Removing Outliers: we used the two-steps approach to find and remove the outliers. The reasoning behind the choice of this approach is explained in the **Experimental Design** section.
+- 4.3) Data Splitting: we generated a training set containing 75% of the observations and a test set containing the remaining 25%. The training set is used to train the model, while the test set is used to evaluate the model's performance on unseen data.
+- 4.4) Distribution of the target variable in the different sets: In order to build a model that is able to perform well on both training and test set, the ratio between the two classes of the target variable must be the same in both sets. The results shows it means that the splitting process kept the ratio constant. As a consequence, we do not have to deal with stratification (splitting the dataset mantaining a balanced ratio between the two classes). 
+- 4.5) Feature Scaling (Fit and Transform): Feature scaling, involving the application of fit_transform on the training set and transform on the test set, is performed to standardize the data. This approach ensures that the scaling parameters are learned from the training set, preventing any information leakage from the test set and maintaining the integrity of the model evaluation process. 
+- 4.6) Creating a Validation Set: The primary purpose of establishing a distinct validation set is to ensure an impartial evaluation of a model trained on the training dataset. By utilizing a separate validation set, we aim to assess the model's performance on unseen data, preventing potential overfitting to the training set and enhancing the model's ability to generalize to new, unseen observations.
 
 ### 5) Model Building
-- Model selection: for our classification task we chose Logistic Regression, Decision Tree, and Random Forest;
-- 5.1) Testing Different Models: to have an overview before the tuning, we compute the training and the validation accuracy for all the three models;
-- 5.2) Hyperparameter Tuning Using Cross-Validation: as a first step, we searched the best hyperparameters for the model using the RandomizedSearchCV function (this allowed us to explicitly control the number of parameter combinations that are attempted);
+As our target variable, 'Satisfied,' is categorical, and our objective is to predict customer satisfaction with the service, our problem falls into the realm of classification. Specifically, since the outcome can be either 'Yes' (satisfied) or 'No' (not satisfied), it is a binary classification problem. Moving forward, we will analyze the following models for addressing this task:
+
+- **Logistic Regression:**
+  
+- **Classification Trees:**
+  
+- **Random Forest:**
+
+- 5.1) Testing Different Models: to gain an initial understanding before tuning, we calculate the training and validation accuracy for all three models using their default parameters. The primary objective is to establish a general performance overview for each model and create a benchmark for later comparison with results obtained after hyperparameter tuning. This initial assessment provides insight into the models' baseline capabilities and sets the stage for evaluating improvements achieved through further optimization.. 
+- 5.2) Hyperparameter Tuning using Cross Validation: In our quest to optimize the performance of our models, the initial step involved searching for the best hyperparameters using the RandomizedSearchCV function. This method was chosen for its efficiency in exploring a broad hyperparameter space, with the aim of identifying a promising set that significantly enhances model performance.
+
+Following this, with the intent of fine-tuning the models with greater precision, we employed the GridSearchCV function. This approach allowed us to focus on a narrower neighborhood around the values identified in the randomized search, resembling the exploration of a local maximum in the hyperparameter space. The goal was to pinpoint the most optimal combination of hyperparameters for our models within this refined range.
+
+The detailed results of these hyperparameter tuning efforts, including the selected parameters, their respective values, and the resulting model performance metrics, can be found in the main notebook. This comprehensive analysis provides insights into the impact of hyperparameter choices on model performance and serves as a valuable reference for refining our models in future iterations.
 
 ### 6) Plotting Learning Curves:
 Learning curves illustrate how a model's performance evolves as it's trained on varying amounts of data, revealing insights into overfitting, underfitting, and the impact of dataset size on model accuracy.
