@@ -13,3 +13,6 @@ __pycache__/
 
 # Data (never committed, see README for where to get it)
 data/
+
+# Local project notes
+Resources/
